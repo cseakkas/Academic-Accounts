@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	{% load static %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>Admin - Login</title>
+        <link rel="shortcut icon" type="image/x-icon" href="/static/accounts_app/img/favicon.png">
+        <link rel="stylesheet" href="/static/accounts_app/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/accounts_app/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/static/accounts_app/css/style.css">
+		
+    </head>
+    <body> 
+        <div class="main-wrapper login-body">
+            <div class="login-wrapper">
+            	<div class="container">
+                	<div class="loginbox">
+                    	<div class="login-left">
+							<img class="img-fluid" src="/static/accounts_app/images/sms2.jpg" alt="Logo">
+                        </div>
+                        <div class="login-right">
+							<div class="login-right-wrap">
+								<h1>Admin Login</h1> 
+								
+								<!-- Form -->
+								<form method="post"> {% csrf_token %}
+									<div class="form-group">
+										<input class="form-control" type="email" name="userEmail" placeholder="Email">
+									</div>
+									<div class="form-group">
+										<input class="form-control" type="password" name="userPassword" placeholder="Password">
+									</div>
+									<div class="form-group">
+										<button class="btn btn-primary btn-block" type="submit">Login</button>
+									</div>
+								</form>
+								<!-- /Form -->
+								
+								<div class="text-center forgotpass"><a href="#">Forgot Password?</a></div>
+						 
+								
+								<div class="text-center dont-have">Don’t have an account? <a href="#">Register</a></div>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+        <script src="/static/accounts_app/js/jquery-3.2.1.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+        <script src="/static/accounts_app/js/popper.min.js"></script>
+        <script src="/static/accounts_app/js/bootstrap.min.js"></script>
+		
+		<!-- Custom JS -->
+		<script src="/static/accounts_app/js/script.js"></script>
+		
+    </body> 
+</html>

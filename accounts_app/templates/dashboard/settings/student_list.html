@@ -1,0 +1,80 @@
+{% extends 'dashboard/master.html' %}
+{% block title %} Student List  {% endblock %} 
+{% load static %}
+{% block content %}
+  
+<div class="content container-fluid"> 
+    <!-- Page Header -->
+    <div class="single-page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="page-title">Student List
+                    <span style="float:right">
+                        <a href="/settings/student-add/" class="btn btn-success">Student Add</a>
+                    </span>
+                </h3> 
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="datatable table table-hover table-center mb-0">
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Class</th>
+                                <th>Roll</th>
+                                <th>Reg.</th>
+                                <th>Blood group</th>
+                                <th>Date of Birth</th>
+                                <th>Status</th>
+                                <th class="text-center" style="width: 160px;">Action</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h2 class="table-avatar">
+                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets/img/Students/Student-thumb-01.jpg" alt="User Image"></a>
+                                        <a href="profile.html">Dr. Ruby Perrin</a>
+                                    </h2>
+                                </td>
+                                <td>Nine</td> 
+                                <td>48</td> 
+                                <td>1245787878</td> 
+                                <td>A+</td> 
+                                <td>14 Jan 2019</td>  
+                                <td>
+                                    <div class="status-toggle">
+                                        <input type="checkbox" id="status_1" class="check" checked>
+                                        <label for="status_1" class="checktoggle">checkbox</label>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <div class="actions">
+                                        <a class="btn btn-sm bg-success-light" data-toggle="modal" href="#edit_specialities_details">
+                                            <i class="fe fe-pencil"></i> Edit
+                                        </a>
+                                        <a data-toggle="modal" href="#delete_modal" class="btn btn-sm bg-danger-light">
+                                            <i class="fe fe-trash"></i> Delete
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>			
+</div>
+
+
+{% endblock %}

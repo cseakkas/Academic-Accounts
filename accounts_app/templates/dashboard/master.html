@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en"> 
+	<head> 
+		{% load static %} 
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+ 
+		<title>{% block title %} Admin Dashboard {% endblock %} </title>
+		{% load data_load %}
+
+		<!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="/static/accounts_app/images/favicon.png">
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="/static/accounts_app/css/bootstrap.min.css">
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/static/accounts_app/css/font-awesome.min.css">
+		<!-- Feathericon CSS -->
+        <link rel="stylesheet" href="/static/accounts_app/css/feathericon.min.css">
+		<link rel="stylesheet" href="/static/accounts_app/plugins/morris/morris.css">
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="/static/accounts_app/css/style.css">
+		
+    </head>
+    <body>
+	
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+			<!-- Header -->
+            <div class="header">
+				<!-- Logo -->
+                <div class="header-left">
+                    <a href="/" class="logo">
+						<img src="/static/accounts_app/images/dashboard_logo.png" alt="Accounts Logo" style="width: 229px;">
+					</a>
+					<a href="/" class="logo logo-small">
+						<img src="/static/accounts_app/images/favicon.png" alt="Logo" width="30" height="30">
+					</a>
+                </div>
+				<!-- /Logo -->
+				
+				<a href="javascript:void(0);" id="toggle_btn">
+					<i class="fe fe-text-align-left"></i>
+				</a>
+				 
+				<!-- Mobile Menu Toggle -->
+				<a class="mobile_btn" id="mobile_btn">
+					<i class="fa fa-bars"></i>
+				</a>
+				<!-- /Mobile Menu Toggle -->
+				
+				<!-- Header Right Menu -->
+				<ul class="nav user-menu">
+ 
+					<!-- User Menu -->
+					<li class="nav-item dropdown has-arrow">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							<span class="user-img">
+								{% if request.session.user_photo %}
+									<img class="rounded-circle" src="/media/{{request.session.user_photo}}" width="31" alt="Ryan Taylor">
+								{% else %}
+									<img class="rounded-circle" src="/static/accounts_app/img/profiles/avatar-01.jpg" width="31" alt="Ryan Taylor">
+								{% endif %}
+							</span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="user-header">
+								<div class="avatar avatar-sm"> 
+									{% if request.session.user_photo %}
+										<img src="/media/{{request.session.user_photo}}" alt="{{ request.session.first_name}}" class="avatar-img rounded-circle">
+									{% else %}
+										<img src="/static/accounts_app/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle">
+									{% endif %}
+								</div>
+								<div class="user-text"> 
+									<h6>{{ request.session.first_name}}</h6>
+									<p class="text-muted mb-0">Admin</p>
+								</div>
+							</div>
+							<a class="dropdown-item" href="profile.html">My Profile</a>
+							<a class="dropdown-item" href="settings.html">Settings</a>
+							<a class="dropdown-item" href="/adminlogout/">Logout</a>
+						</div>
+					</li>
+					<!-- /User Menu -->
+					
+				</ul>
+				<!-- /Header Right Menu -->
+				
+            </div>
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-inner slimscroll">
+					<div id="sidebar-menu" class="sidebar-menu">
+						<ul>
+							<li {% if request.path == '/' %}class="active" {% endif %}> 
+								<a href="/"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+							</li>
+							{% for module in request.session.user_id|module_list %}
+								<li class="submenu">
+									<a href="#"><i style="font-size: 20px;" class="fe fe-document"></i> <span> {{ module.module_name }}</span> <span class="menu-arrow"></span></a>
+									<ul style="display: none;">
+										{% for menu in request.session.user_id|menu_list:module.module_name %} 
+											<li><a href="{{ menu.menu.menu_url }}"> <i class="fe fe-document" style="font-size:15px;margin-right:0px"></i> {{ menu.menu.menu_name }}</a></li> 
+										{% endfor %}  
+									</ul>
+								</li>
+							{% endfor %}  
+						</ul>
+					</div>
+                </div>
+            </div>
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+			
+				{% block content %}
+
+				{% endblock %}
+               
+			</div>
+			<!-- /Page Wrapper -->
+		
+        </div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+        <script src="/static/accounts_app/js/jquery-3.2.1.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+        <script src="/static/accounts_app/js/popper.min.js"></script>
+        <script src="/static/accounts_app/js/bootstrap.min.js"></script>
+		
+		<!-- Slimscroll JS -->
+        <script src="/static/accounts_app/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		
+		<script src="/static/accounts_app/plugins/raphael/raphael.min.js"></script>    
+		<script src="/static/accounts_app/plugins/morris/morris.min.js"></script>  
+		<script src="/static/accounts_app/js/chart.morris.js"></script>
+		
+		<!-- Custom JS -->
+		<script  src="/static/accounts_app/js/script.js"></script>
+		
+    </body> 
+</html>

@@ -1,0 +1,47 @@
+{% extends 'dashboard/master.html' %}
+{% block title %} Class Add  {% endblock %} 
+{% load static %}
+{% block content %}
+  
+<div class="content container-fluid"> 
+    <!-- Page Header -->
+    <div class="single-page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="page-title">Class Add
+                    <span style="float:right">
+                        <a href="/settings/class-list/" class="btn btn-success">Class list</a>
+                    </span>
+                </h3> 
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+    
+    <div class="row">
+        <div class="col-sm-8"> 
+            <div class="card">
+                <div class="card-body">
+                    <form method="post"> {% csrf_token %}
+                        <div class="form_group">
+                            <label>Class Name</label>
+                            <input type="text" class="form-control" name="class_name" placeholder="Enter Class Name" required>
+                        </div>
+                        <div class="form_group">
+                            <label>Short Name</label>
+                            <input type="text" class="form-control" name="short_name" placeholder="Enter Short Name" required>
+                        </div>
+                        <div class="form_group">
+                            <label>Rank</label>
+                            <input type="number" class="form-control" name="rank">
+                        </div>
+                        <div class="form_group"> 
+                            <input type="submit" class="btn btn-success" value="Add Class">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>	
+{% endblock %}

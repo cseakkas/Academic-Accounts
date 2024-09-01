@@ -1,0 +1,58 @@
+{% extends 'dashboard/master.html' %}
+{% block title %} Chart Of Accounts List {% endblock %} 
+{% load static %}
+{% block content %}
+  
+<div class="content container-fluid"> 
+    <!-- Page Header -->
+    <div class="single-page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="page-title">Chart Of Accounts List
+                    <span style="float:right">
+                        <a href="/settings/chart-of-accounts-add/" class="btn btn-success">Chart Of Accounts Add</a>
+                    </span>
+                </h3> 
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+    
+    <div class="row">
+        <div class="col-sm-12"> 
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>SL</th>
+                            <th>Head Name</th>
+                            <th>Head Type</th>
+                            <th>Rank</th>
+                            <th>Status</th>
+                            <th class="text-center" style="width: 160px;">Action</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Fee Collection</td>
+                            <td>Income</td>
+                            <td>9</td>
+                            <td>Active</td>
+                            <td class="text-center">
+                                <div class="actions">
+                                    <a class="btn btn-sm bg-success-light" data-toggle="modal" href="#edit_specialities_details">
+                                        <i class="fe fe-pencil"></i> Edit
+                                    </a>
+                                    <a data-toggle="modal" href="#delete_modal" class="btn btn-sm bg-danger-light">
+                                        <i class="fe fe-trash"></i> Delete
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                     
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>	
+{% endblock %}
