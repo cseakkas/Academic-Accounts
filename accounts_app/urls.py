@@ -14,6 +14,7 @@ urlpatterns = [
     path('settings/chart-of-accounts-add/', views.ChartOfAccountsAdd, name="ChartOfAccountsAdd"),
     path('settings/chart-of-accounts-list/', views.ChartOfAccountsList, name="ChartOfAccountsList"),
     path('settings/students-fees-setup/', views.StudentsFeesSetup, name="StudentsFeesSetup"),
+    path('settings/students-fees-setup-list/', views.StudentsFeesSetupList, name="StudentsFeesSetupList"),
     
 
 ]

@@ -2,7 +2,11 @@
 {% block title %} Students Fees Setup {% endblock %} 
 {% load static %}
 {% block content %}
-  
+
+<style>
+    #feesAmount{width:150px}
+</style>
+
 <div class="content container-fluid"> 
     <!-- Page Header -->
     <!-- <div class="single-page-header"> -->
@@ -25,39 +29,40 @@
     <!-- /Page Header -->
     
     <div class="row">  
-        <div class="col-sm-8"> 
+        <div class="col-sm-10"> 
             <div class="card">
                 <div class="card-body">
                     <form method="post"> {% csrf_token %}
-                        <div class="form_group">
-                            <label>Class</label>
-                            <select name="head_types" class="form-control">
-                                <option value="">---Select Class---</option>
-                                <option value="Six">Six</option>
-                                <option value="Seven">Seven</option>
-                                <option value="Eight">Eight</option>
-                            </select>
-                        </div>
-                        <div class="form_group">
-                            <label>Year</label>
-                            <select name="head_types" class="form-control">
-                                <option value="">---Select Year---</option>
-                                <option value="2024">2024</option>
-                                <option value="2025">2025</option>
-                                <option value="2026">2026</option>
-                            </select>
-                        </div>
-                        <div class="form_group">
-                            <label>Head Name</label>
-                            <input type="text" class="form-control" name="head_name" placeholder="Enter Head Name" required>
-                        </div>
-                        <div class="form_group">
-                            <label>Rank</label>
-                            <input type="number" class="form-control" name="rank">
-                        </div>
-                        <div class="form_group"> 
-                            <input type="submit" class="btn btn-success" value="Add Chart Of Accounts">
-                        </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Class</th>
+                                <th>Year</th>
+                                <th>Fees Type</th>
+                                <th style="width: 200px;">Amount</th>
+                            </tr>
+                            <tr>
+                                <td>Six</td>
+                                <td>2024</td>
+                                <td>Admission Fee</td>
+                                <td>
+                                    <input type="number" class="form-control" id="feesAmount" name="fess_amount">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Six</td>
+                                <td>2024</td>
+                                <td>Session Fee</td>
+                                <td>
+                                    <input type="number" class="form-control" id="feesAmount" name="fess_amount">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"></td> 
+                                <td>
+                                    <input type="submit" class="btn btn-success" value="Save Fees">
+                                </td>
+                            </tr>
+                        </table>
                     </form>
                 </div>
             </div>

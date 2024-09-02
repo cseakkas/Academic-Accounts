@@ -82,3 +82,10 @@ def StudentsFeesSetup(request):
 
 
     
+@UserLogin
+def StudentsFeesSetupList(request): 
+
+    return render(request, 'dashboard/settings/students_fees_setup_list.html')
+
+
+    
