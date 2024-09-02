@@ -74,6 +74,11 @@ def ChartOfAccountsAdd(request):
 def ChartOfAccountsList(request): 
 
     return render(request, 'dashboard/settings/chart_of_accounts_list.html')
+ 
+@UserLogin
+def StudentsFeesSetup(request): 
+
+    return render(request, 'dashboard/settings/students_fees_setup.html')
 
 
     

@@ -936,6 +936,7 @@ button.bg-danger:hover {
 	background-color:rgba(17, 148, 247,0.12) !important;
 	color:#2196f3 !important;
 }
+ 
 .bg-danger-light{
 	background-color:rgba(242, 17, 54, 0.418) !important;
 	color:#e63c3c !important;
@@ -1989,7 +1990,7 @@ input{margin-bottom:8px}
 	padding: 15px;
 }
 .page-header {
-	margin-bottom: 1.875rem;
+	margin-bottom: 5px;
 }
 .page-header .breadcrumb {
     background-color: transparent;
@@ -2003,8 +2004,9 @@ input{margin-bottom:8px}
 	color: #333;
 }
 .page-title {
-    color: #333;
-    margin-bottom: 5px;
+    color: #000000;
+    margin-bottom: 0px;
+    font-weight: 600;
 }
 
 /*-----------------

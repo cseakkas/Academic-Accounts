@@ -1,5 +1,5 @@
 {% extends 'dashboard/master.html' %}
-{% block title %} Chart Of Accounts {% endblock %} 
+{% block title %} Students Fees Setup {% endblock %} 
 {% load static %}
 {% block content %}
   
@@ -9,15 +9,15 @@
     <div class="page-header">
         <div class="row">
             <div class="col-sm-12">
-                <h3 class="page-title">Chart Of Accounts Add
+                <h3 class="page-title">Students Fees Setup
                     <span style="float:right">
-                        <a href="/settings/chart-of-accounts-list/" class="btn btn-success">Chart Of Accounts list</a>
+                        <a href="#" class="btn btn-success">Students Fees List</a>
                     </span>
                 </h3>   
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
                     <li class="breadcrumb-item">Settings</li>
-                    <li class="breadcrumb-item active">Chart Of Accounts Add</li>
+                    <li class="breadcrumb-item active">Students Fee Setup</li>
                 </ul> 
             </div> 
         </div> 
@@ -30,11 +30,21 @@
                 <div class="card-body">
                     <form method="post"> {% csrf_token %}
                         <div class="form_group">
-                            <label>Head Type</label>
+                            <label>Class</label>
                             <select name="head_types" class="form-control">
-                                <option value="">---Select---</option>
-                                <option value="income">Income</option>
-                                <option value="expense">Expense</option>
+                                <option value="">---Select Class---</option>
+                                <option value="Six">Six</option>
+                                <option value="Seven">Seven</option>
+                                <option value="Eight">Eight</option>
+                            </select>
+                        </div>
+                        <div class="form_group">
+                            <label>Year</label>
+                            <select name="head_types" class="form-control">
+                                <option value="">---Select Year---</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
                             </select>
                         </div>
                         <div class="form_group">
