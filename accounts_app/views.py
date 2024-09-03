@@ -101,6 +101,7 @@ def AccessControlAdd(request):
         context = {
             'access_list':access_list,
             'user_list':user_list,
+            'user_name_id':int(user_name_id),
         }
         return render(request, 'dashboard/settings/access_controll_add.html', context)
     else: 

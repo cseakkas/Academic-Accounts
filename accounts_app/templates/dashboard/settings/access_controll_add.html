@@ -32,18 +32,22 @@
     <!-- /Page Header -->
     
     <div class="row">  
-        <div class="col-sm-11"> 
+        <div class="col-sm-12"> 
             <div class="card">
                 <div class="card-body">
                     <form method="post"> {% csrf_token %}
                         <table class="table table-bordered" style="margin-bottom: 10px;">
                             <tr>
-                                <th>User Name</th>
+                                <th>User Name </th>
                                 <th>
-                                    <select class="form-control" name="user_name_id">
+                                    <select class="form-control" name="user_name_id" required>
                                         <option value="">---Select---</option>
                                         {% for data in user_list %}
-                                            <option value="{{ data.pk }}"> {{ data.full_name }} </option>
+                                            {% if data.pk == user_name_id %}
+                                                <option value="{{ data.pk }}" selected> {{ data.full_name }} </option>
+                                            {% else %}
+                                                <option value="{{ data.pk }}"> {{ data.full_name }} </option>
+                                            {% endif %}
                                         {% endfor %}
                                     </select> 
                                 </th> 
