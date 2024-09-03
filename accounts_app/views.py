@@ -87,5 +87,29 @@ def StudentsFeesSetupList(request):
 
     return render(request, 'dashboard/settings/students_fees_setup_list.html')
 
+    
+@UserLogin
+def AccessControlAdd(request): 
+    user_id = request.session.get('user_id')
+    
+    user_list = models.UserRegistration.objects.all()
+
+    if request.method == 'POST':
+        user_name_id = request.POST.get('user_name_id')
+
+        access_list = models.UserAccessControl.objects.filter(user_id=user_name_id)
+        context = {
+            'access_list':access_list,
+            'user_list':user_list,
+        }
+        return render(request, 'dashboard/settings/access_controll_add.html', context)
+    else: 
+        access_list = models.UserAccessControl.objects.filter(user_id=user_id)
+        context = {
+            'access_list':access_list,
+            'user_list':user_list,
+        }
+        return render(request, 'dashboard/settings/access_controll_add.html', context)
+
 
     

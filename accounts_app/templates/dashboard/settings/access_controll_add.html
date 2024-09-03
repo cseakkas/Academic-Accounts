@@ -1,0 +1,95 @@
+{% extends 'dashboard/master.html' %}
+{% block title %} Students Fees Setup List {% endblock %} 
+{% load static %}
+{% block content %}
+
+<style>
+    .table-bordered tr th{vertical-align: middle;}
+    .table-bordered tr td{vertical-align: middle;}
+    .danger-color{color:rgb(165, 46, 46); text-align: center;}
+    .success-color{color:rgb(9, 151, 57)}
+</style>
+
+<div class="content container-fluid"> 
+    <!-- Page Header -->
+    <!-- <div class="single-page-header"> -->
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="page-title">Access Control Add
+                    <span style="float:right">
+                        <a href="#" class="btn btn-success">Access Control List</a>
+                    </span>
+                </h3>   
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item">Settings</li>
+                    <li class="breadcrumb-item active">Access Control Add</li>
+                </ul> 
+            </div> 
+        </div> 
+    </div>
+    <!-- /Page Header -->
+    
+    <div class="row">  
+        <div class="col-sm-11"> 
+            <div class="card">
+                <div class="card-body">
+                    <form method="post"> {% csrf_token %}
+                        <table class="table table-bordered" style="margin-bottom: 10px;">
+                            <tr>
+                                <th>User Name</th>
+                                <th>
+                                    <select class="form-control" name="user_name_id">
+                                        <option value="">---Select---</option>
+                                        {% for data in user_list %}
+                                            <option value="{{ data.pk }}"> {{ data.full_name }} </option>
+                                        {% endfor %}
+                                    </select> 
+                                </th> 
+                                <th>
+                                    <input type="submit" class="btn btn-success" value="Search">
+                                </th>
+                            </tr>
+                        </table>
+                    </form>
+                    
+                    <table class="table table-bordered">
+                        <tr style="background: #f5f5f5;">
+                            <th>Module Name</th>
+                            <th>Menu Name</th>
+                            <th>Is Insert</th>
+                            <th>Is View</th>
+                            <th>Is Update</th>
+                            <th>Is Delete</th> 
+                            <th style="width: 165px;">Action</th>
+                        </tr>
+                        {% for data in access_list %}
+                        <tr>
+                            <td>{{data.menu.module_name}}</td>
+                            <td>{{data.menu.menu_name}}</td> 
+                            <td> {% if data.insert_action == True %} <i class="fa fa-check success-color"></i> {% else %} <i class="fa fa-times danger-color"></i> {% endif %} </td>
+                            <td> {% if data.view_action == True %} <i class="fa fa-check success-color"></i> {% else %} <i class="fa fa-times danger-color"></i> {% endif %} </td>
+                            <td> {% if data.update_action == True %} <i class="fa fa-check success-color"></i> {% else %} <i class="fa fa-times danger-color"></i> {% endif %} </td>
+                            <td> {% if data.delete_action == True %} <i class="fa fa-check success-color"></i> {% else %} <i class="fa fa-times danger-color"></i> {% endif %} </td>
+ 
+                            <td class="text-center">
+                                <div class="actions">
+                                    <a class="btn btn-sm bg-success-light" data-toggle="modal" href="#edit_specialities_details">
+                                        <i class="fe fe-pencil"></i> Edit
+                                    </a>
+                                    <a data-toggle="modal" href="#delete_modal" class="btn btn-sm bg-danger-light">
+                                        <i class="fe fe-trash"></i> Delete
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %} 
+                 
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>	
+{% endblock %}
