@@ -1,5 +1,5 @@
 {% extends 'dashboard/master.html' %}
-{% block title %} Access Control Add {% endblock %} 
+{% block title %} Access Control List {% endblock %} 
 {% load static %}
 {% block content %}
 
@@ -16,15 +16,15 @@
     <div class="page-header">
         <div class="row">
             <div class="col-sm-12">
-                <h3 class="page-title">Access Control Add
+                <h3 class="page-title">Access Control List
                     <span style="float:right">
-                        <a href="#" class="btn btn-success">Access Control List</a>
+                        <a href="#" class="btn btn-success">Access Control Add</a>
                     </span>
                 </h3>   
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
                     <li class="breadcrumb-item">Settings</li>
-                    <li class="breadcrumb-item active">Access Control Add</li>
+                    <li class="breadcrumb-item active">Access Control List</li>
                 </ul> 
             </div> 
         </div> 
@@ -65,22 +65,28 @@
                             <th>Is Insert</th>
                             <th>Is View</th>
                             <th>Is Update</th>
-                            <th>Is Delete</th>  
+                            <th>Is Delete</th> 
+                            <th style="width: 165px;">Action</th>
                         </tr>
                         {% for data in access_list %}
                         <tr>
                             <td>{{data.menu.module_name}}</td>
-                            <td>
-                                <label>
-                                    <input type="checkbox" name="insert_action" style="width:20px;height:20px">
-                                    {{data.menu.menu_name}}
-                                </label> 
-                            </td> 
-                            <td><input type="checkbox" name="insert_action" style="width:20px;height:20px"></td> 
-                            <td><input type="checkbox" name="view_action" style="width:20px;height:20px"></td> 
-                            <td><input type="checkbox" name="update_action" style="width:20px;height:20px"></td> 
-                            <td><input type="checkbox" name="delete_action" style="width:20px;height:20px"></td> 
-           
+                            <td>{{data.menu.menu_name}}</td> 
+                            <td> {% if data.insert_action == True %} <i class="fa fa-check success-color"></i> {% else %} <i class="fa fa-times danger-color"></i> {% endif %} </td>
+                            <td> {% if data.view_action == True %} <i class="fa fa-check success-color"></i> {% else %} <i class="fa fa-times danger-color"></i> {% endif %} </td>
+                            <td> {% if data.update_action == True %} <i class="fa fa-check success-color"></i> {% else %} <i class="fa fa-times danger-color"></i> {% endif %} </td>
+                            <td> {% if data.delete_action == True %} <i class="fa fa-check success-color"></i> {% else %} <i class="fa fa-times danger-color"></i> {% endif %} </td>
+ 
+                            <td class="text-center">
+                                <div class="actions">
+                                    <a class="btn btn-sm bg-success-light" data-toggle="modal" href="#edit_specialities_details">
+                                        <i class="fe fe-pencil"></i> Edit
+                                    </a>
+                                    <a data-toggle="modal" href="#delete_modal" class="btn btn-sm bg-danger-light">
+                                        <i class="fe fe-trash"></i> Delete
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
                         {% endfor %} 
                  
