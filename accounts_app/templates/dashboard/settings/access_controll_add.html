@@ -62,27 +62,25 @@
                         <tr style="background: #f5f5f5;">
                             <th>Module Name</th>
                             <th>Menu Name</th>
-                            <th>Is Insert</th>
-                            <th>Is View</th>
-                            <th>Is Update</th>
-                            <th>Is Delete</th>  
+                            <th style="text-align: center;">Insert Action</th>
+                            <th style="text-align: center;">View Action</th>
+                            <th style="text-align: center;">Update Action</th>
+                            <th style="text-align: center;">Delete Action</th>  
                         </tr>
                         {% for data in access_list %}
                         <tr>
                             <td>{{data.menu.module_name}}</td>
-                            <td>
-                                <label>
-                                    <input type="checkbox" name="insert_action" style="width:20px;height:20px">
-                                    {{data.menu.menu_name}}
-                                </label> 
-                            </td> 
-                            <td><input type="checkbox" name="insert_action" style="width:20px;height:20px"></td> 
-                            <td><input type="checkbox" name="view_action" style="width:20px;height:20px"></td> 
-                            <td><input type="checkbox" name="update_action" style="width:20px;height:20px"></td> 
-                            <td><input type="checkbox" name="delete_action" style="width:20px;height:20px"></td> 
-           
+                            <td> {{data.menu.menu_name}} </td> 
+                            <td style="text-align: center;"><input type="checkbox" name="insert_action" style="width:20px;height:20px;"></td> 
+                            <td style="text-align: center;"><input type="checkbox" name="view_action" style="width:20px;height:20px"></td> 
+                            <td style="text-align: center;"><input type="checkbox" name="update_action" style="width:20px;height:20px"></td> 
+                            <td style="text-align: center;"><input type="checkbox" name="delete_action" style="width:20px;height:20px"></td> 
                         </tr>
                         {% endfor %} 
+                        <tr>
+                            <td colspan="5"></td>
+                            <td><input type="submit" class="btn btn-success" value="Save Permission" name="save_permission"></td>
+                        </tr>
                  
                     </table>
                 </div>

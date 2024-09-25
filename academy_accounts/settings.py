@@ -123,8 +123,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = 'accounts_app/static/'
 
-MEDIA_URL = '/media/'
-# MEDIA_ROOT = '/accounts_app/media/'
+MEDIA_URL = '/media/' 
 MEDIA_ROOT = 'accounts_app/media/'
 
 # Default primary key field type
