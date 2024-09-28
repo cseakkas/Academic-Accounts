@@ -1,0 +1,123 @@
+{% extends 'dashboard/master.html' %}
+{% block title %} Add Student {% endblock %}
+{% load static %}
+{% block content %}
+
+<div class="content container-fluid">
+    <!-- Page Header -->
+    <div class="single-page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="page-title">Add New Student
+                    <span style="float:right">
+                        <a href="/settings/student-list/" class="btn btn-success">Student List</a>
+                    </span>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <div class="row">
+                            <!-- First Name -->
+                            <div class="form-group col-md-4">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" name="first_name" placeholder="Enter First Name" required>
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="form-group col-md-4">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" name="last_name" placeholder="Enter Last Name" required>
+                            </div>
+
+                            <!-- Roll -->
+                            <div class="form-group col-md-4">
+                                <label>Roll</label>
+                                <input type="number" class="form-control" name="roll" placeholder="Enter Roll" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Registration Number -->
+                            <div class="form-group col-md-4">
+                                <label>Registration Number</label>
+                                <input type="number" class="form-control" name="reg_no" placeholder="Enter Registration Number" required>
+                            </div>
+
+                            <!-- Date of Birth -->
+                            <div class="form-group col-md-4">
+                                <label>Date of Birth</label>
+                                <input type="date" class="form-control" name="date_of_birth" required>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="form-group col-md-4">
+                                <label>Email Address</label>
+                                <input type="email" class="form-control" name="email" placeholder="Enter Email Address" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Phone Number -->
+                            <div class="form-group col-md-4">
+                                <label>Phone Number</label>
+                                <input type="tel" class="form-control" name="phone_number" placeholder="Enter Phone Number">
+                            </div>  
+                            <!-- Class -->
+                            <div class="form-group col-md-4">
+                                <label>Class</label>
+                                <select class="form-control" name="class_name" required>
+                                    <option value="">Select Class</option>
+                                    {% for class in class_list %}
+                                        <option value="{{ class.id }}">{{ class.class_name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <!-- Father's Name -->
+                            <div class="form-group col-md-4">
+                                <label>Father's Name</label>
+                                <input type="text" class="form-control" name="father_name" placeholder="Enter Father's Name" required>
+                            </div>
+
+                            <!-- Mother's Name -->
+                            <div class="form-group col-md-4">
+                                <label>Mother's Name</label>
+                                <input type="text" class="form-control" name="mother_name" placeholder="Enter Mother's Name" required>
+                            </div>
+                        
+                            <!-- Guardian's Name -->
+                            <div class="form-group col-md-4">
+                                <label>Guardian's Name</label>
+                                <input type="text" class="form-control" name="guardian_name" placeholder="Enter Guardian's Name">
+                            </div>
+
+                              <!-- Address -->
+                              <div class="form-group col-md-12">
+                                <label>Address</label>
+                                <textarea class="form-control" name="address" placeholder="Enter Address"></textarea>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="form-group col-md-4">
+                                <button type="submit" class="btn btn-primary" style="margin-top: 2px;">Add Student</button>
+                            </div>
+                            
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

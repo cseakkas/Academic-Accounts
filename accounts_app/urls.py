@@ -10,6 +10,9 @@ urlpatterns = [
     # Settings Url list 
     path('settings/class-add/', views.classAdd, name="classAdd"),
     path('settings/class-list/', views.classList, name="classList"),
+    path('settings/class/delete/<str:text_id>/', views.classDelete, name="classDelete"),
+    
+    path('settings/student-add/', views.studentAdd, name="studentAdd"),
     path('settings/student-list/', views.studentList, name="studentList"),
     path('settings/chart-of-accounts-add/', views.ChartOfAccountsAdd, name="ChartOfAccountsAdd"),
     path('settings/chart-of-accounts-list/', views.ChartOfAccountsList, name="ChartOfAccountsList"),

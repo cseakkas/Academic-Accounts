@@ -60,31 +60,81 @@ def classAdd(request):
         chk_exist = models.ClassList.objects.filter(text_id=text_id).first()
         if not chk_exist:
             class_obj = models.ClassList(
-                class_name=class_name,
-                text_id=text_id,
-                short_name=short_name,
-                rank=rank
+                class_name=class_name, text_id=text_id,
+                short_name=short_name, rank=rank
             )
-            class_obj.save()
-
-            # Add success message
-            messages.success(request, 'Class added successfully!')
+            class_obj.save() 
             return redirect('/settings/class-list/')
-        else:
-            # Add error message if class already exists
-            messages.error(request, 'Class with this name already exists!')
-    
+        else: 
+            messages = f'Class with this name already exists!'
+            return render(request, 'dashboard/settings/class_add.html', {'messages': messages})
     return render(request, 'dashboard/settings/class_add.html')
 
 @UserLogin
 def classList(request): 
-
-    return render(request, 'dashboard/settings/class_list.html')
+    classes = models.ClassList.objects.filter(status=True).order_by('rank')
+     
+    return render(request, 'dashboard/settings/class_list.html', {'classes': classes})
+ 
 
 @UserLogin
-def studentList(request): 
+def classDelete(request, text_id):   
+    text_id = text_id
+    print(text_id)
+    classes = models.ClassList.objects.filter(text_id=text_id).first()
+    if classes:
+        print("4444444444444444")
+        classes.delete() 
+        return redirect('/settings/class-list/')
+    else: 
+        return redirect('/settings/class-list/')
+         
+ 
 
-    return render(request, 'dashboard/settings/student_list.html')
+@UserLogin
+def studentAdd(request): 
+
+    class_list = models.ClassList.objects.filter(status=True).order_by('rank')
+    
+    if request.method == 'POST':
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        roll = request.POST.get('roll')
+        reg_no = request.POST.get('reg_no')
+        date_of_birth = request.POST.get('date_of_birth')
+        email = request.POST.get('email')
+        phone_number = request.POST.get('phone_number')
+        address = request.POST.get('address')
+        class_name_id = request.POST.get('class_name')
+        father_name = request.POST.get('father_name')
+        mother_name = request.POST.get('mother_name')
+        guardian_name = request.POST.get('guardian_name')
+
+        # Save the new student
+        student_obj = models.StudentList(
+            first_name=first_name,
+            last_name=last_name,
+            roll=roll,
+            reg_no=reg_no,
+            date_of_birth=date_of_birth,
+            email=email,
+            phone_number=phone_number,
+            address=address,
+            class_name_id=class_name_id,
+            father_name=father_name,
+            mother_name=mother_name,
+            guardian_name=guardian_name
+        )
+        student_obj.save() 
+        return redirect('/settings/student-list/')
+
+    return render(request, 'dashboard/settings/student_add.html', {'class_list': class_list})
+
+@UserLogin
+def studentList(request):
+    student_list = models.StudentList.objects.all().order_by('id') 
+
+    return render(request, 'dashboard/settings/student_list.html',{'student_list': student_list})
 
 
 @UserLogin
