@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from . import models 
+from django.contrib import messages
 from accounts_app.decorators import UserLogin
 # Create your views here.
 
@@ -49,8 +50,30 @@ def accessDeny(request):
     return render(request, 'dashboard/access_deny.html')
 
 @UserLogin
-def classAdd(request): 
+def classAdd(request):
+    if request.method == 'POST':
+        class_name = request.POST.get('class_name')
+        text_id = class_name.replace(" ", "").lower()
+        short_name = request.POST.get('short_name')
+        rank = request.POST.get('rank')
 
+        chk_exist = models.ClassList.objects.filter(text_id=text_id).first()
+        if not chk_exist:
+            class_obj = models.ClassList(
+                class_name=class_name,
+                text_id=text_id,
+                short_name=short_name,
+                rank=rank
+            )
+            class_obj.save()
+
+            # Add success message
+            messages.success(request, 'Class added successfully!')
+            return redirect('/settings/class-list/')
+        else:
+            # Add error message if class already exists
+            messages.error(request, 'Class with this name already exists!')
+    
     return render(request, 'dashboard/settings/class_add.html')
 
 @UserLogin

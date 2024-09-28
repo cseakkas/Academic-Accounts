@@ -81,4 +81,41 @@ class UserAccessControl(models.Model):
         db_table = 'user_access_control'
         verbose_name = "Access Control"
         verbose_name_plural = "User Access Control"                
+
+
+class ClassList(models.Model):
+    text_id       = models.CharField(max_length=32, unique=True)
+    class_name    = models.CharField(max_length=50)
+    short_name    = models.CharField(max_length=10)
+    rank          = models.IntegerField(default=0) 
+    status        = models.BooleanField(default=True) 
+    created       = models.DateTimeField(auto_now=True)  
+    
+    def __str__(self):
+        return str(self.class_name)   
+        
+    class Meta:
+        db_table = 'class_list'
+        verbose_name = "Class List"
+        verbose_name_plural = "ClassList"                
  
+
+class StudentList(models.Model):
+    class_name = models.ForeignKey(ClassList, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    roll = models.CharField(max_length=50, unique=True)
+    reg_no = models.CharField(max_length=50, unique=True)
+    date_of_birth = models.DateField()
+    email = models.EmailField(unique=True)
+    phone_number = models.CharField(max_length=15, blank=True, null=True)
+    address = models.TextField(blank=True, null=True) 
+    father_name = models.CharField(max_length=100)
+    mother_name = models.CharField(max_length=100)
+    guardian_name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+
+    class Meta:
+        db_table = 'student_list'

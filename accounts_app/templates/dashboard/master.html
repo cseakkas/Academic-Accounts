@@ -19,6 +19,7 @@
 		<link rel="stylesheet" href="/static/accounts_app/plugins/morris/morris.css">
 		<!-- Main CSS -->
         <link rel="stylesheet" href="/static/accounts_app/css/style.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 		
     </head>
     <body>
@@ -129,6 +130,7 @@
 		<!-- jQuery -->
         <script src="/static/accounts_app/js/jquery-3.2.1.min.js"></script>
 		
+    	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<!-- Bootstrap Core JS -->
         <script src="/static/accounts_app/js/popper.min.js"></script>
         <script src="/static/accounts_app/js/bootstrap.min.js"></script>
@@ -142,6 +144,20 @@
 		
 		<!-- Custom JS -->
 		<script  src="/static/accounts_app/js/script.js"></script>
+
+		<script>
+			{% if messages %}
+				{% for message in messages %}
+					<script>
+						Swal.fire({
+							icon: '{% if message.tags == "success" %}success{% else %}error{% endif %}',
+							title: '{{ message }}',
+							showConfirmButton: true
+						});
+					</script>
+				{% endfor %}
+			{% endif %}
+		</script>
 		
     </body> 
 </html>
