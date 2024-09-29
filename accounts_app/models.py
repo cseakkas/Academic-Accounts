@@ -121,3 +121,50 @@ class StudentList(models.Model):
 
     class Meta:
         db_table = 'student_list'
+
+
+
+class FinancialHead(models.Model): 
+    text_id = models.CharField(max_length=32, unique=True, db_index=True)
+    head_name = models.CharField(max_length=100) 
+    description = models.TextField(blank=True, null=True)
+    rank          = models.IntegerField(default=0) 
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=False, null=True, blank=True)
+    status        = models.BooleanField(default=True) 
+
+    def __str__(self):
+        return f"{self.head_name}"
+
+    class Meta:
+        db_table = 'financial_head'
+        verbose_name = 'Financial Head'
+        verbose_name_plural = 'Financial Heads'
+
+class ChartOfAccounts(models.Model): 
+    financial_head  = models.ForeignKey(FinancialHead, on_delete=models.CASCADE)  
+    text_id         = models.CharField(max_length=32, unique=True, db_index=True)
+    chart_name      = models.CharField(max_length=150)
+    description     = models.TextField(blank=True, null=True)
+    rank            = models.IntegerField(default=0)  
+    created         = models.DateTimeField(auto_now_add=True)
+    updated         = models.DateTimeField(auto_now=False, null=True, blank=True)
+    status        = models.BooleanField(default=True) 
+
+    def __str__(self):
+        return f"{self.chart_name}"
+
+    class Meta:
+        db_table = 'chart_of_accounts'
+        verbose_name = 'Chart of Account'
+        verbose_name_plural = 'Chart of Accounts'
+        unique_together = ('text_id', 'financial_head')
+
+
+
+
+
+
+
+
+

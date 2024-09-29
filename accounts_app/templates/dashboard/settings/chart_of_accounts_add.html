@@ -33,13 +33,18 @@
                             <label>Head Type</label>
                             <select name="head_types" class="form-control">
                                 <option value="">---Select---</option>
-                                <option value="income">Income</option>
-                                <option value="expense">Expense</option>
+                                {% for data in head_list %}
+                                    <option value="{{data.id}}">{{data.head_name}}</option>
+                                {% endfor %} 
                             </select>
                         </div>
                         <div class="form_group">
-                            <label>Head Name</label>
-                            <input type="text" class="form-control" name="head_name" placeholder="Enter Head Name" required>
+                            <label>Chart Of accounts Name</label>
+                            <input type="text" class="form-control" name="chart_name" placeholder="Enter Head Name" required>
+                        </div>
+                        <div class="form_group">
+                            <label>Description</label>
+                            <textarea class="form-control" name="description" placeholder="Enter Description"></textarea>
                         </div>
                         <div class="form_group">
                             <label>Rank</label>

@@ -139,19 +139,53 @@ def studentList(request):
 
 @UserLogin
 def ChartOfAccountsAdd(request): 
+    head_list = models.FinancialHead.objects.filter(status=True).order_by('rank')
+    
+    if request.method == 'POST':
+        head_types_id = request.POST.get('head_types')
+        chart_name = request.POST.get('chart_name')
+        description = request.POST.get('description')
+        rank = request.POST.get('rank')
 
-    return render(request, 'dashboard/settings/chart_of_accounts_add.html')
+        # generate textId from chart_name
+        text_id = chart_name.replace(" ", "").lower()
+
+        # Save the new head 
+        instantce = models.ChartOfAccounts(
+            financial_head_id=head_types_id, text_id = text_id,
+            chart_name=chart_name, description=description, rank=rank
+        )
+        instantce.save() 
+        return redirect('/settings/chart-of-accounts-list/')
+
+    context = {
+        'head_list': head_list,
+    }
+    return render(request, 'dashboard/settings/chart_of_accounts_add.html', context)
 
 
 @UserLogin
 def ChartOfAccountsList(request): 
+    data_list = models.ChartOfAccounts.objects.filter(status=True)
 
-    return render(request, 'dashboard/settings/chart_of_accounts_list.html')
+    context = {
+        'data_list': data_list,
+    }
+    return render(request, 'dashboard/settings/chart_of_accounts_list.html', context)
  
 @UserLogin
-def StudentsFeesSetup(request): 
+def StudentsFeesSetup(request):  
+    class_list = models.ClassList.objects.filter(status=True).order_by('rank')
+    data_list = models.ChartOfAccounts.objects.filter(status=True)
+    year_list = ["2022", "2023", "2024", "2025", "2026"] 
 
-    return render(request, 'dashboard/settings/students_fees_setup.html')
+    context = {
+        'class_list': class_list,
+        'data_list': data_list, 
+        'year_list': year_list, 
+    }
+
+    return render(request, 'dashboard/settings/students_fees_setup.html', context)
 
 
     

@@ -31,12 +31,13 @@
                             <th>Status</th>
                             <th class="text-center" style="width: 160px;">Action</th>
                         </tr>
+                        {% for data in data_list %}
                         <tr>
-                            <td>1</td>
-                            <td>Tution fee</td>
-                            <td>Income</td>
-                            <td>9</td>
-                            <td>Active</td>
+                            <td>{{ data.id }}</td>
+                            <td>{{data.chart_name}}</td>
+                            <td>{{data.financial_head.head_name}}</td>
+                            <td>{{data.rank}}</td>
+                            <td>{% if data.status == 1 %} Active {% else %} Inactive {% endif %}</td>
                             <td class="text-center">
                                 <div class="actions">
                                     <a class="btn btn-sm bg-success-light" data-toggle="modal" href="#edit_specialities_details">
@@ -48,75 +49,8 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Session fee</td>
-                            <td>Income</td>
-                            <td>9</td>
-                            <td>Active</td>
-                            <td class="text-center">
-                                <div class="actions">
-                                    <a class="btn btn-sm bg-success-light" data-toggle="modal" href="#edit_specialities_details">
-                                        <i class="fe fe-pencil"></i> Edit
-                                    </a>
-                                    <a data-toggle="modal" href="#delete_modal" class="btn btn-sm bg-danger-light">
-                                        <i class="fe fe-trash"></i> Delete
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Exam fee</td>
-                            <td>Income</td>
-                            <td>9</td>
-                            <td>Active</td>
-                            <td class="text-center">
-                                <div class="actions">
-                                    <a class="btn btn-sm bg-success-light" data-toggle="modal" href="#edit_specialities_details">
-                                        <i class="fe fe-pencil"></i> Edit
-                                    </a>
-                                    <a data-toggle="modal" href="#delete_modal" class="btn btn-sm bg-danger-light">
-                                        <i class="fe fe-trash"></i> Delete
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Electric Bill</td>
-                            <td>Expense</td>
-                            <td>3</td>
-                            <td>Active</td>
-                            <td class="text-center">
-                                <div class="actions">
-                                    <a class="btn btn-sm bg-success-light" data-toggle="modal" href="#edit_specialities_details">
-                                        <i class="fe fe-pencil"></i> Edit
-                                    </a>
-                                    <a data-toggle="modal" href="#delete_modal" class="btn btn-sm bg-danger-light">
-                                        <i class="fe fe-trash"></i> Delete
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Daily Cost</td>
-                            <td>Expense</td>
-                            <td>6</td>
-                            <td>Active</td>
-                            <td class="text-center">
-                                <div class="actions">
-                                    <a class="btn btn-sm bg-success-light" data-toggle="modal" href="#edit_specialities_details">
-                                        <i class="fe fe-pencil"></i> Edit
-                                    </a>
-                                    <a data-toggle="modal" href="#delete_modal" class="btn btn-sm bg-danger-light">
-                                        <i class="fe fe-trash"></i> Delete
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                     
+                        {% endfor %}
+               
                     </table>
                 </div>
             </div>
