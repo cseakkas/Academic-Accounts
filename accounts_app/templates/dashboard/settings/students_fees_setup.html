@@ -35,14 +35,8 @@
                     <form method="post"> {% csrf_token %}
                         <table class="table table-bordered">
                             <tr>
-                                <th style="width:200px">Class</th>
-                                <th style="width:200px">Year</th>
-                                <th>Fees Type</th>
-                                <th style="width: 200px;">Amount</th>
-                            </tr>
-                            {% for data in data_list %}
-                            <tr>
                                 <td>
+                                    <label for="">Class List</label>
                                     <select class="form-control" name="class"> 
                                         <option value="">Select Class</option>
                                         {% for cls in class_list %}
@@ -51,7 +45,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    
+                                    <label for="">Year</label>
                                     <select class="form-control" name="year"> 
                                         <option value="">Select Year</option>
                                         {% for year in year_list %}
@@ -59,6 +53,14 @@
                                         {% endfor %}
                                     </select>
                                 </td>
+                            </tr>
+                            <tr> 
+                                <th>Fees Type</th>
+                                <th style="width: 200px;">Amount</th>
+                            </tr>
+                            {% for data in data_list %}
+                            <tr>
+                               
                                 <td>{{ data.chart_name}}</td>
                                 <td>
                                     <input type="number" class="form-control" id="feesAmount" name="fess_amount" value="0">
@@ -66,7 +68,7 @@
                             </tr>
                             {% endfor %}
                             <tr>
-                                <td colspan="3"></td>
+                                <td colspan="1"></td>
                                 <td>
                                     <input type="submit" value="Save Fees" class="btn btn-success">
                                 </td>
