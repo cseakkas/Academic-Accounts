@@ -18,6 +18,40 @@
     </div>
     <!-- /Page Header -->
 
+    <!-- Search Form -->
+    <form method="POST"> {% csrf_token %}
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <input type="text" name="search_name" class="form-control" placeholder="Search by Name" value="{{search_name}}">
+            </div>
+            <div class="col-md-3">
+                <select class="form-control" name="class_id">
+                    <option value="">Select Class</option>
+                    {% for class in class_list %}
+                        {% if class.id == class_id %}
+                            <option value="{{ class.id }}" selected>{{ class.class_name }}</option>
+                        {% else %}
+                            <option value="{{ class.id }}">{{ class.class_name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="search_roll" class="form-control" placeholder="Search by Roll" value="{{search_roll}}">
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary">Search</button>
+                <!-- <a href="/settings/student-list/" class="btn btn-secondary">Reset</a> -->
+                {% if student_list %}
+                    <!-- <a href="/settings/export-students/" class="btn btn-secondary">Export to Excel</a> -->
+                    <a href="/settings/export-students/?search_name={{ search_name }}&class_id={{ class_id }}&search_roll={{ search_roll }}" class="btn btn-secondary">Export to Excel</a>
+
+                {% endif %}
+            </div>
+        </div>
+    </form>
+    <!-- /Search Form -->
+
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
@@ -46,7 +80,7 @@
                                     <td>{{ student.phone_number }}</td>
                                     <td class="text-center">
                                         <div class="actions">
-                                            <a class="btn btn-sm bg-success-light" href="">
+                                            <a class="btn btn-sm bg-success-light" href="/settings/student/{{student.id}}/edit/">
                                                 <i class="fe fe-pencil"></i> Edit
                                             </a>
                                             <a href="/" class="btn btn-sm bg-danger-light" onclick="return confirm('Are you sure you want to delete this student?');">

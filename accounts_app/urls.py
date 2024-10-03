@@ -14,6 +14,9 @@ urlpatterns = [
     
     path('settings/student-add/', views.studentAdd, name="studentAdd"),
     path('settings/student-list/', views.studentList, name="studentList"),
+    path('settings/student/<int:id>/edit/', views.studentUpdate, name="studentUpdate"),
+    path('settings/export-students/', views.export_students_xlsx, name='export_students_xlsx'),
+
     path('settings/chart-of-accounts-add/', views.ChartOfAccountsAdd, name="ChartOfAccountsAdd"),
     path('settings/chart-of-accounts-list/', views.ChartOfAccountsList, name="ChartOfAccountsList"),
     path('settings/students-fees-setup/', views.StudentsFeesSetup, name="StudentsFeesSetup"),
@@ -25,7 +28,8 @@ urlpatterns = [
 
     path('users/user-add/', views.usersAdd, name="usersAdd"),
     path('users/user-list/', views.usersList, name="usersList"),
-    path('users/user/<int:id>/list/', views.usersDelete, name="usersDelete"),
+    path('users/user/<int:id>/delete/', views.usersDelete, name="usersDelete"),
+    path('users/user/<int:id>/edit/', views.usersUpdate, name="usersUpdate"),
 
 
     

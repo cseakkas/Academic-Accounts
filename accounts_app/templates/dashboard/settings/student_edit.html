@@ -1,0 +1,138 @@
+{% extends 'dashboard/master.html' %}
+{% block title %} Update Student {% endblock %}
+{% load static %}
+{% block content %}
+
+<div class="content container-fluid">
+    <!-- Page Header -->
+    <div class="single-page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="page-title">Update Student
+                    <span style="float:right">
+                        <a href="" class="btn btn-primary">Back to Student List</a>
+                    </span>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="class_name">Class Name</label>
+                                    <select name="class_name" id="class_name" class="form-control">
+                                        {% for class in class_list %}
+                                            <option value="{{ class.id }}" {% if student.class_name.id == class.id %}selected{% endif %}>
+                                                {{ class.class_name }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="first_name">First Name</label>
+                                    <input type="text" name="first_name" id="first_name" class="form-control" value="{{ student.first_name }}" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="last_name">Last Name</label>
+                                    <input type="text" name="last_name" id="last_name" class="form-control" value="{{ student.last_name }}" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="roll">Roll</label>
+                                    <input type="text" name="roll" id="roll" class="form-control" value="{{ student.roll }}" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="reg_no">Registration Number</label>
+                                    <input type="text" name="reg_no" id="reg_no" class="form-control" value="{{ student.reg_no }}" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" id="email" class="form-control" value="{{ student.email }}" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="phone_number">Phone Number</label>
+                                    <input type="text" name="phone_number" id="phone_number" class="form-control" value="{{ student.phone_number }}">
+                                </div>
+                            </div>
+ 
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="date_of_birth">Date of Birth</label>
+                                    <input type="date" name="date_of_birth" id="date_of_birth" class="form-control" value="{{ student.date_of_birth|date:'Y-m-d' }}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="father_name">Father's Name</label>
+                                    <input type="text" name="father_name" id="father_name" class="form-control" value="{{ student.father_name }}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="mother_name">Mother's Name</label>
+                                    <input type="text" name="mother_name" id="mother_name" class="form-control" value="{{ student.mother_name }}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="guardian_name">Guardian's Name</label>
+                                    <input type="text" name="guardian_name" id="guardian_name" class="form-control" value="{{ student.guardian_name }}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <select name="status" id="status" class="form-control">
+                                        <option value="True" {% if student.status %}selected{% endif %}>Active</option>
+                                        <option value="False" {% if not student.status %}selected{% endif %}>Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <textarea name="address" id="address" class="form-control">{{ student.address }}</textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="text-left">
+                            <button type="submit" class="btn btn-primary">Update Student</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>			
+    </div>
+</div>
+
+{% endblock %}

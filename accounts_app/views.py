@@ -2,6 +2,12 @@ from django.shortcuts import render, redirect
 from . import models 
 from django.contrib import messages
 from accounts_app.decorators import UserLogin
+from django.db.models import Q
+import openpyxl, csv
+
+from openpyxl.utils import get_column_letter
+from django.http import HttpResponse
+
 # Create your views here.
 
   
@@ -82,8 +88,7 @@ def classDelete(request, text_id):
     text_id = text_id
     print(text_id)
     classes = models.ClassList.objects.filter(text_id=text_id).first()
-    if classes:
-        print("4444444444444444")
+    if classes: 
         classes.delete() 
         return redirect('/settings/class-list/')
     else: 
@@ -92,8 +97,7 @@ def classDelete(request, text_id):
  
 
 @UserLogin
-def studentAdd(request): 
-
+def studentAdd(request):  
     class_list = models.ClassList.objects.filter(status=True).order_by('rank')
     
     if request.method == 'POST':
@@ -130,11 +134,142 @@ def studentAdd(request):
 
     return render(request, 'dashboard/settings/student_add.html', {'class_list': class_list})
 
-@UserLogin
-def studentList(request):
-    student_list = models.StudentList.objects.all().order_by('id') 
 
-    return render(request, 'dashboard/settings/student_list.html',{'student_list': student_list})
+@UserLogin
+def studentList(request): 
+    class_list = models.ClassList.objects.filter(status=True).order_by('rank')
+    student_list = models.StudentList.objects.all().order_by('id') 
+    if request.method == 'POST':
+        search_name = request.POST.get('search_name').strip()
+        class_id = request.POST.get('class_id')
+        search_roll = request.POST.get('search_roll')
+  
+        # Filter the student list based on search criteria
+        student_list = models.StudentList.objects.all()
+
+        if search_name:
+            student_list = student_list.filter(Q(first_name__icontains=search_name) | Q(last_name__icontains=search_name))
+
+        if class_id:
+            class_id = int(class_id)
+            student_list = student_list.filter(class_name_id=class_id)
+
+        if search_roll:
+            student_list = student_list.filter(roll__icontains=search_roll)
+
+        context = {
+            'student_list': student_list,
+            'class_list': class_list,
+            'class_id': class_id,
+            'search_name': search_name,
+            'search_roll': search_roll,
+        }
+        return render(request, 'dashboard/settings/student_list.html',context)
+    
+    context = {
+        'class_list': class_list,
+        'student_list': student_list,
+
+    }
+    return render(request, 'dashboard/settings/student_list.html',context)
+
+
+def export_students_xlsx(request):
+    search_name = request.GET.get('search_name', '')
+    search_roll = request.GET.get('search_roll', '')
+    class_id = request.GET.get('class_id', '')
+ 
+    # Filter the students based on search criteria
+    students = models.StudentList.objects.all()
+
+    if search_name:
+        students = students.filter(first_name__icontains=search_name)
+    if search_roll:
+        students = students.filter(roll__icontains=search_roll)
+    if class_id:
+        class_id = int(class_id)
+        students = students.filter(class_name_id=class_id) 
+        print("class_", students)
+
+    # Create an Excel workbook and sheet
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = 'Students'
+
+    # Define headers
+    headers = ['First Name', 'Last Name', 'Class', 'Roll', 'Registration No', 'Email', 'Phone']
+    ws.append(headers)
+
+    # Add student data
+    for student in students:
+        ws.append([
+            student.first_name, 
+            student.last_name, 
+            student.class_name.class_name, 
+            student.roll, 
+            student.reg_no, 
+            student.email, 
+            student.phone_number
+        ])
+
+    # Set column widths (optional)
+    for col_num, header in enumerate(headers, 1):
+        column_letter = get_column_letter(col_num)
+        ws.column_dimensions[column_letter].width = 20  # You can adjust the width as needed
+
+    # Prepare response to return as Excel file
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename=students.xlsx'
+
+    # Save the workbook to the response
+    wb.save(response)
+    
+    return response
+
+
+@UserLogin
+def studentUpdate(request, id):
+    student = models.StudentList.objects.get(id=id)
+    
+    class_list = models.ClassList.objects.filter(status=True).order_by('rank')
+    
+    if request.method == 'POST':
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        roll = request.POST.get('roll')
+        reg_no = request.POST.get('reg_no')
+        date_of_birth = request.POST.get('date_of_birth')
+        email = request.POST.get('email')
+        phone_number = request.POST.get('phone_number')
+        address = request.POST.get('address')
+        class_name_id = request.POST.get('class_name')
+        father_name = request.POST.get('father_name')
+        mother_name = request.POST.get('mother_name')
+        guardian_name = request.POST.get('guardian_name')
+        
+        # Update the student data
+        student.first_name = first_name
+        student.last_name = last_name
+        student.roll = roll
+        student.reg_no = reg_no
+        student.date_of_birth = date_of_birth
+        student.email = email
+        student.phone_number = phone_number
+        student.address = address
+        student.class_name_id = class_name_id
+        student.father_name = father_name
+        student.mother_name = mother_name
+        student.guardian_name = guardian_name
+        student.save()
+        
+        return redirect('/settings/student-list/')
+    
+    context = {
+       'student': student,
+        'class_list': class_list,
+    }
+    return render(request, 'dashboard/settings/student_edit.html', context)
+
 
 
 @UserLogin
@@ -309,6 +444,8 @@ def AccessControlList(request):
         }
         return render(request, 'dashboard/settings/access_controll_list.html', context)
 
+
+@UserLogin
 def usersAdd(request):
     if request.method == "POST":
         first_name = request.POST.get('first_name')
@@ -333,12 +470,36 @@ def usersAdd(request):
     return render(request, 'dashboard/users/user_add.html')
 
 
+@UserLogin
+def usersUpdate(request, id): 
+    user = models.UserRegistration.objects.filter(id=id).first()
+    if user:
+        if request.method == "POST":
+            user.first_name = request.POST.get('first_name')
+            user.last_name = request.POST.get('last_name')
+            user.full_name = f"{user.first_name} {user.last_name}"
+            user.email = request.POST.get('email')
+            user.mobile = request.POST.get('mobile')
+            user.designation = request.POST.get('designation')
+            user.username = request.POST.get('email')
+            user.status = True if request.POST.get('status') else False
+
+            if request.FILES.get('photo'):
+                user.photo = request.FILES.get('photo')
+
+            user.save()
+            # messages.success(request, 'User updated successfully.')
+            return redirect('/users/user-list/')
+
+    return render(request, 'dashboard/users/user_edit.html', {'user': user})
+
+@UserLogin
 def usersList(request):
     users = models.UserRegistration.objects.all()
 
     return render(request, 'dashboard/users/user_list.html', {'users': users})
 
- 
+@UserLogin
 def usersDelete(request, id):
     users = models.UserRegistration.objects.filter(id=id)
     if users:
