@@ -21,6 +21,13 @@ urlpatterns = [
     
     path('settings/access-control-add/', views.AccessControlAdd, name="AccessControlAdd"),
     path('settings/access-control-list/', views.AccessControlList, name="AccessControlList"),
+
+
+    path('users/user-add/', views.usersAdd, name="usersAdd"),
+    path('users/user-list/', views.usersList, name="usersList"),
+    path('users/user/<int:id>/list/', views.usersDelete, name="usersDelete"),
+
+
     
 
 ]

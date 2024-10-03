@@ -15,7 +15,7 @@
             <div class="col-sm-12">
                 <h3 class="page-title">Students Fees Setup
                     <span style="float:right">
-                        <a href="#" class="btn btn-success">Students Fees Setup</a>
+                        <a href="/settings/students-fees-setup/" class="btn btn-success">Students Fees Setup</a>
                     </span>
                 </h3>   
                 <ul class="breadcrumb">
@@ -37,17 +37,29 @@
                             <tr>
                                 <th>Class</th>
                                 <th>
-                                    <select class="form-control" name="class_id">
-                                         <option value="">Six</option>
-                                         <option value="">Seven</option>
-                                    </select> 
+                                    <select class="form-control" name="class_id" required> 
+                                        <option value="">Select Class</option>
+                                        {% for cls in class_list %}
+                                            {% if cls.id == class_id %}
+                                                <option value="{{ cls.id }}" selected>{{ cls.class_name }}</option>
+                                            {% else %}
+                                                <option value="{{ cls.id }}">{{ cls.class_name }}</option> 
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
                                 </th>
                                 <th>Year</th>
                                 <th>
-                                    <select class="form-control" name="class_id">
-                                         <option value="">2024</option>
-                                         <option value="">2025</option>
-                                    </select> 
+                                    <select class="form-control" name="year" required> 
+                                        <option value="">Select Year</option>
+                                        {% for data in year_list %}
+                                             {% if data == year %}
+                                                <option value="{{ data }}" selected>{{ data }}</option>
+                                            {% else %}
+                                                <option value="{{ data }}">{{ data }}</option>
+                                            {% endif %} 
+                                        {% endfor %}
+                                    </select>
                                 </th>
                                 <th>
                                     <input type="submit" class="btn btn-success" value="Search">
@@ -56,6 +68,7 @@
                         </table>
                     </form>
                     
+                    {% if data_list %}
                     <table class="table table-bordered">
                         <tr style="background: #f5f5f5;">
                             <th>Class</th>
@@ -64,11 +77,12 @@
                             <th style="width: 200px;">Amount</th>
                             <th style="width: 165px;">Action</th>
                         </tr>
+                        {% for data in data_list %}
                         <tr>
-                            <td>Six</td>
-                            <td>2024</td>
-                            <td>Admission Fee</td>
-                            <td>Tk. 250</td>
+                            <td>{{data.class_name.class_name}}</td>
+                            <td>{{data.year}}</td>
+                            <td>{{data.fees_head.chart_name}}</td>
+                            <td>Tk. {{data.amount}}</td>
                             <td class="text-center">
                                 <div class="actions">
                                     <a class="btn btn-sm bg-success-light" data-toggle="modal" href="#edit_specialities_details">
@@ -80,88 +94,10 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td>Six</td>
-                            <td>2024</td>
-                            <td>Admission Fee</td>
-                            <td>Tk. 250</td>
-                            <td class="text-center">
-                                <div class="actions">
-                                    <a class="btn btn-sm bg-success-light" data-toggle="modal" href="#edit_specialities_details">
-                                        <i class="fe fe-pencil"></i> Edit
-                                    </a>
-                                    <a data-toggle="modal" href="#delete_modal" class="btn btn-sm bg-danger-light">
-                                        <i class="fe fe-trash"></i> Delete
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Six</td>
-                            <td>2024</td>
-                            <td>Admission Fee</td>
-                            <td>Tk. 250</td>
-                            <td class="text-center">
-                                <div class="actions">
-                                    <a class="btn btn-sm bg-success-light" data-toggle="modal" href="#edit_specialities_details">
-                                        <i class="fe fe-pencil"></i> Edit
-                                    </a>
-                                    <a data-toggle="modal" href="#delete_modal" class="btn btn-sm bg-danger-light">
-                                        <i class="fe fe-trash"></i> Delete
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Six</td>
-                            <td>2024</td>
-                            <td>Admission Fee</td>
-                            <td>Tk. 250</td>
-                            <td class="text-center">
-                                <div class="actions">
-                                    <a class="btn btn-sm bg-success-light" data-toggle="modal" href="#edit_specialities_details">
-                                        <i class="fe fe-pencil"></i> Edit
-                                    </a>
-                                    <a data-toggle="modal" href="#delete_modal" class="btn btn-sm bg-danger-light">
-                                        <i class="fe fe-trash"></i> Delete
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Six</td>
-                            <td>2024</td>
-                            <td>Admission Fee</td>
-                            <td>Tk. 250</td>
-                            <td class="text-center">
-                                <div class="actions">
-                                    <a class="btn btn-sm bg-success-light" data-toggle="modal" href="#edit_specialities_details">
-                                        <i class="fe fe-pencil"></i> Edit
-                                    </a>
-                                    <a data-toggle="modal" href="#delete_modal" class="btn btn-sm bg-danger-light">
-                                        <i class="fe fe-trash"></i> Delete
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Six</td>
-                            <td>2024</td>
-                            <td>Admission Fee</td>
-                            <td>Tk. 250</td>
-                            <td class="text-center">
-                                <div class="actions">
-                                    <a class="btn btn-sm bg-success-light" data-toggle="modal" href="#edit_specialities_details">
-                                        <i class="fe fe-pencil"></i> Edit
-                                    </a>
-                                    <a data-toggle="modal" href="#delete_modal" class="btn btn-sm bg-danger-light">
-                                        <i class="fe fe-trash"></i> Delete
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                            
+                        {% endfor %} 
                     </table>
+                    
+                    {% endif %}
                 </div>
             </div>
         </div>

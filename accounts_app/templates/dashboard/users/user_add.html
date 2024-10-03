@@ -1,0 +1,115 @@
+{% extends 'dashboard/master.html' %}
+{% block title %} User Registration {% endblock %}
+{% load static %}
+{% block content %}
+
+<div class="content container-fluid">
+    <!-- Page Header -->
+    <div class="single-page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="page-title">User Registration 
+                    <span style="float:right">
+                        <a href="/users/user-list/" class="btn btn-success">User List</a>
+                    </span>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+
+    <div class="row">
+        <div class="col-sm-10">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <!-- First Name -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="first_name">First Name</label>
+                                    <input type="text" name="first_name" id="first_name" class="form-control" placeholder="Enter first name">
+                                </div>
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="last_name">Last Name</label>
+                                    <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Enter last name">
+                                </div>
+                            </div>
+ 
+
+                            <!-- Email -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="Enter email" required>
+                                </div>
+                            </div>
+
+                            <!-- Mobile -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="mobile">Mobile</label>
+                                    <input type="text" name="mobile" id="mobile" class="form-control" placeholder="Enter mobile number">
+                                </div>
+                            </div>
+
+                            <!-- Mobile 2 -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="mobile2">Mobile (Optional)</label>
+                                    <input type="text" name="mobile2" id="mobile2" class="form-control" placeholder="Enter second mobile number">
+                                </div>
+                            </div>
+
+                            <!-- Designation -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="designation">Designation</label>
+                                    <select name="designation" id="designation" class="form-control">
+                                        <option value="" disabled selected>Select Designation</option>
+                                        <option value="Manager">Manager</option>
+                                        <option value="Developer">Developer</option>
+                                        <option value="Designer">Designer</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="Sales">Sales</option>
+                                        <option value="Support">Support</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+
+                            <!-- Password -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="Enter password" required>
+                                </div>
+                            </div>
+
+                            <!-- Photo -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="photo">Profile Photo</label>
+                                    <input type="file" name="photo" id="photo" class="form-control">
+                                </div>
+                            </div> 
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="text-left">
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -167,12 +167,12 @@ class ClassWiseFeeSetup(models.Model):
     year         = models.CharField(max_length=32)
     fees_head    = models.ForeignKey(ChartOfAccounts, on_delete=models.CASCADE) 
     amount       = models.IntegerField(blank=True, null=True) 
-    created         = models.DateTimeField(auto_now_add=True)
-    updated         = models.DateTimeField(auto_now=False, null=True, blank=True)
-    status        = models.BooleanField(default=True) 
+    created      = models.DateTimeField(auto_now_add=True)
+    updated      = models.DateTimeField(auto_now=False, null=True, blank=True)
+    status       = models.BooleanField(default=True) 
 
     def __str__(self):
-        return f"{self.chart_name}"
+        return f"{self.fees_head.chart_name}"
 
     class Meta:
         db_table = 'class_wise_fee_setup' 

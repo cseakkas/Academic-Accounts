@@ -175,13 +175,54 @@ def ChartOfAccountsList(request):
  
 @UserLogin
 def StudentsFeesSetup(request):  
-    class_list = models.ClassList.objects.filter(status=True).order_by('rank')
-    data_list = models.ChartOfAccounts.objects.filter(status=True)
+    class_list = models.ClassList.objects.filter(status=True).order_by('rank') 
     year_list = ["2022", "2023", "2024", "2025", "2026"] 
 
+    if request.method == 'POST':
+        if 'search_fees' in request.POST:
+            class_id = request.POST.get('class_id')
+            year = request.POST.get('year')
+            chk_exist = models.ClassWiseFeeSetup.objects.filter(class_name_id=class_id, year = year).exists()
+            if chk_exist:
+                messages = f'Fees setup for class {class_id} and year {year} already exists!'
+                context = {
+                    'messages': messages,
+                    'class_list': class_list,
+                    'year_list': year_list,
+                    'class_id': int(class_id),
+                    'year': year,
+                }
+                return render(request, 'dashboard/settings/students_fees_setup.html', context)
+            else:
+                data_list = models.ChartOfAccounts.objects.filter(status=True)
+                context = {
+                    'data_list': data_list,
+                    'class_list': class_list,
+                    'year_list': year_list,
+                    'class_id': int(class_id),
+                    'year': year,
+                }
+                return render(request, 'dashboard/settings/students_fees_setup.html', context)
+
+        else:
+            class_id = request.POST.get('class_id')
+            year = request.POST.get('year')
+            fees_type_ids = request.POST.getlist('fees_type_id')
+            fess_amount  = request.POST.getlist('fess_amount')
+
+            print("fees_type_ids:", fees_type_ids)
+            print("fess_amount:", fess_amount)
+
+            for i in range(len(fees_type_ids)):
+                fees_obj = models.ClassWiseFeeSetup(
+                    class_name_id=class_id, year=year,
+                    fees_head_id=fees_type_ids[i], amount=fess_amount[i]
+                )
+                fees_obj.save()
+            return redirect('/settings/students-fees-setup-list/')
+
     context = {
-        'class_list': class_list,
-        'data_list': data_list, 
+        'class_list': class_list, 
         'year_list': year_list, 
     }
 
@@ -191,8 +232,30 @@ def StudentsFeesSetup(request):
     
 @UserLogin
 def StudentsFeesSetupList(request): 
+    
+    class_list = models.ClassList.objects.filter(status=True).order_by('rank') 
+    year_list = ["2022", "2023", "2024", "2025", "2026"] 
 
-    return render(request, 'dashboard/settings/students_fees_setup_list.html')
+    if request.method == 'POST':
+        class_id = request.POST.get('class_id')
+        year = request.POST.get('year')
+
+        data_list = models.ClassWiseFeeSetup.objects.filter(class_name_id=class_id, year=year)
+        context = {
+            'data_list': data_list,
+            'class_list': class_list,
+            'year_list': year_list,
+            'class_id': int(class_id),
+            'year': year,
+        }
+        return render(request, 'dashboard/settings/students_fees_setup_list.html', context)
+ 
+
+    context = { 
+        'class_list': class_list,
+        'year_list': year_list,
+    }  
+    return render(request, 'dashboard/settings/students_fees_setup_list.html', context)
 
     
 @UserLogin
@@ -245,6 +308,44 @@ def AccessControlList(request):
             'user_list':user_list,
         }
         return render(request, 'dashboard/settings/access_controll_list.html', context)
+
+def usersAdd(request):
+    if request.method == "POST":
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        full_name = f"{first_name} {last_name}"
+        email = request.POST.get('email')
+        mobile = request.POST.get('mobile')
+        designation = request.POST.get('designation')
+        photo = request.FILES.get('photo') 
+        password = request.POST.get('password')
+
+        # Create a new user
+        new_user = models.UserRegistration.objects.create(
+            first_name=first_name,last_name=last_name, full_name=full_name,
+            email=email, mobile=mobile, designation=designation,
+            photo=photo, username=email, password=password
+        )
+        new_user.save()
+        # messages.success(request, 'User added successfully.')
+        return redirect('/users/user-list/')
+ 
+    return render(request, 'dashboard/users/user_add.html')
+
+
+def usersList(request):
+    users = models.UserRegistration.objects.all()
+
+    return render(request, 'dashboard/users/user_list.html', {'users': users})
+
+ 
+def usersDelete(request, id):
+    users = models.UserRegistration.objects.filter(id=id)
+    if users:
+        users.delete()
+        # messages.success(request, 'User deleted successfully.')
+        return redirect('/users/user-list/') 
+
 
 
     

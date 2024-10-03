@@ -191,6 +191,13 @@ textarea.form-control {
 .table.no-border > thead > tr > th {
 	border-top: 0;
 	padding: 10px 8px;
+	vertical-align: middle;
+}
+.table.no-border > tr > td { 
+	vertical-align: middle;
+}
+.table > tr > td > input { 
+	margin-bottom:0px !important
 }
 .table-nowrap td,
 .table-nowrap th {
@@ -3307,6 +3314,7 @@ table.table-inbox tbody tr.checked {
 .chat-window .chat-cont-right .chat-body .media.sent .media-body .msg-box > div:hover .chat-msg-actions {
 	opacity: 1;
 }
+
 .chat-msg-actions {
 	position: absolute;
 	left: -30px;

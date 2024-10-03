@@ -4,18 +4,16 @@
 {% block content %}
 
 <style>
-    #feesAmount{width:150px}
+    #feesAmount{width:150px;margin-bottom: 0;}
 </style>
 
-<div class="content container-fluid"> 
-    <!-- Page Header -->
-    <!-- <div class="single-page-header"> -->
+<div class="content container-fluid">  
     <div class="page-header">
         <div class="row">
             <div class="col-sm-12">
                 <h3 class="page-title">Students Fees Setup
                     <span style="float:right">
-                        <a href="#" class="btn btn-success">Students Fees List</a>
+                        <a href="/settings/students-fees-setup-list/" class="btn btn-success">Students Fees List</a>
                     </span>
                 </h3>   
                 <ul class="breadcrumb">
@@ -30,38 +28,71 @@
     
     <div class="row">  
         <div class="col-sm-10"> 
-            <div class="card">
-                <div class="card-body">
-                    <form method="post"> {% csrf_token %}
+            <div class="card"> 
+                <div class="card-body"> 
+                    <form method="POST">{% csrf_token %}
                         <table class="table table-bordered">
                             <tr>
-                                <td>
-                                    <label for="">Class List</label>
-                                    <select class="form-control" name="class"> 
+                                <th> Class List </th>
+                                <td> 
+                                    <select class="form-control" name="class_id" required> 
                                         <option value="">Select Class</option>
                                         {% for cls in class_list %}
-                                            <option value="{{ cls.id }}">{{ cls.class_name }}</option>
+                                            {% if cls.id == class_id %}
+                                                <option value="{{ cls.id }}" selected>{{ cls.class_name }}</option>
+                                            {% else %}
+                                                <option value="{{ cls.id }}">{{ cls.class_name }}</option> 
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <th> Year</th>
+                                <td> 
+                                    <select class="form-control" name="year" required> 
+                                        <option value="">Select Year</option>
+                                        {% for data in year_list %}
+                                             {% if data == year %}
+                                                <option value="{{ data }}" selected>{{ data }}</option>
+                                            {% else %}
+                                                <option value="{{ data }}">{{ data }}</option>
+                                            {% endif %} 
                                         {% endfor %}
                                     </select>
                                 </td>
                                 <td>
-                                    <label for="">Year</label>
-                                    <select class="form-control" name="year"> 
-                                        <option value="">Select Year</option>
-                                        {% for year in year_list %}
-                                            <option value="{{ year }}">{{ year }}</option>
-                                        {% endfor %}
-                                    </select>
+                                    <input type="submit" name="search_fees" value="Search Fees" class="btn btn-success">
                                 </td>
                             </tr>
+                        </table>
+                    </form>  
+                     <br>
+                     {% if messages %} <h3> {{messages}} </h3>{% endif %}
+                     
+                </div>
+            </div>    
+        </div>
+
+        
+
+        {% if data_list %}
+        <div class="col-sm-10"> 
+            <div class="card">
+                <div class="card-body"> 
+                    
+                    <form method="post"> {% csrf_token %}
+                        <input type="text" value="{{class_id}}" name="class_id" hidden>
+                        <input type="text" value="{{year}}" name="year" hidden>
+                        <table class="table table-bordered"> 
                             <tr> 
                                 <th>Fees Type</th>
                                 <th style="width: 200px;">Amount</th>
                             </tr>
                             {% for data in data_list %}
-                            <tr>
-                               
-                                <td>{{ data.chart_name}}</td>
+                            <tr> 
+                                <td>
+                                    {{ data.chart_name}} 
+                                    <input type="text" value="{{data.id}}" name="fees_type_id" hidden>
+                                </td>
                                 <td>
                                     <input type="number" class="form-control" id="feesAmount" name="fess_amount" value="0">
                                 </td>
@@ -70,15 +101,16 @@
                             <tr>
                                 <td colspan="1"></td>
                                 <td>
-                                    <input type="submit" value="Save Fees" class="btn btn-success">
+                                    <input type="submit" name="save_fees" value="Save Fees" class="btn btn-success">
                                 </td>
                             </tr>
                              
                         </table>
-                    </form>
+                    </form> 
                 </div>
             </div>
         </div>
+        {% endif %}
     </div>
 </div>	
 {% endblock %}
