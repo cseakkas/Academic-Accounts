@@ -509,4 +509,36 @@ def usersDelete(request, id):
 
 
 
+
+@UserLogin
+def studentsFeeCollection(request):
+    if request.method == 'POST':
+        student_id = request.POST.get('student_id')
+        fee_head_id = request.POST.get('fee_head_id')
+        amount = request.POST.get('amount')
+        date = request.POST.get('date')
+        is_paid = request.POST.get('is_paid') == 'on'
+        
+        student = StudentList.objects.get(id=student_id)
+        fee_head = FeeHead.objects.get(id=fee_head_id)
+        
+        StudentFee.objects.create(
+            student=student,
+            fee_head=fee_head,
+            amount=amount,
+            date=date,
+            is_paid=is_paid
+        )
+        return redirect('fee_list')
+    
+    students = StudentList.objects.all()
+    fee_heads = FeeHead.objects.all()
+    return render(request, 'dashboard/students/fee_collection.html', {'students': students, 'fee_heads': fee_heads})
+
+
+
+@UserLogin
+def fee_list(request):
+    student_fees = StudentFee.objects.all()
+    return render(request, 'dashboard/students/fee_list.html', {'student_fees': student_fees})
     

@@ -32,6 +32,10 @@ urlpatterns = [
     path('users/user/<int:id>/edit/', views.usersUpdate, name="usersUpdate"),
 
 
+    path('students/fee-collection/', views.studentsFeeCollection, name='studentsFeeCollection'),
+    path('fee-list/', views.fee_list, name='fee_list'),
+
+
     
 
 ]

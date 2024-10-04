@@ -1,0 +1,35 @@
+{% extends 'dashboard/master.html' %}
+{% block title %} Student Fee List {% endblock %}
+{% block content %}
+<div class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="page-title">Student Fee List</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Student</th>
+                            <th>Fee Head</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for fee in student_fees %}
+                        <tr>
+                            <td>{{ fee.student.first_name }} {{ fee.student.last_name }}</td>
+                            <td>{{ fee.fee_head.name }}</td>
+                            <td>{{ fee.amount }}</td>
+                            <td>{{ fee.date }}</td>
+                            <td>{{ fee.is_paid|yesno:"Paid,Not Paid" }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
