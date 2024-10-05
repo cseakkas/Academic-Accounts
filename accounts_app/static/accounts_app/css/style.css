@@ -4160,3 +4160,16 @@ table.table-inbox tbody tr.checked {
 		display: none;
 	}
 }
+
+.width-50{width:50px}
+.width-80{width:80px}
+.width-100{width:100px}
+.width-150{width:150px}
+.width-200{width:200px}
+.width-300{width:300px}
+.width-400{width:400px}
+
+.card-body table tr td input{
+	margin-bottom: 0px !important;
+}
+

@@ -10,6 +10,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 
+year_array = ["2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"]
   
 def check_user_permission(request, menu_url):
     chk_privilege    = models.UserAccessControl.objects.filter(user_id = int(request.session.get("user_id")), menu_id__menu_url = menu_url, menu_id__status = True, status = True).first()
@@ -311,7 +312,7 @@ def ChartOfAccountsList(request):
 @UserLogin
 def StudentsFeesSetup(request):  
     class_list = models.ClassList.objects.filter(status=True).order_by('rank') 
-    year_list = ["2022", "2023", "2024", "2025", "2026"] 
+    year_list = year_array 
 
     if request.method == 'POST':
         if 'search_fees' in request.POST:
@@ -369,7 +370,7 @@ def StudentsFeesSetup(request):
 def StudentsFeesSetupList(request): 
     
     class_list = models.ClassList.objects.filter(status=True).order_by('rank') 
-    year_list = ["2022", "2023", "2024", "2025", "2026"] 
+    year_list = year_array 
 
     if request.method == 'POST':
         class_id = request.POST.get('class_id')
@@ -385,7 +386,7 @@ def StudentsFeesSetupList(request):
         }
         return render(request, 'dashboard/settings/students_fees_setup_list.html', context)
  
-
+    
     context = { 
         'class_list': class_list,
         'year_list': year_list,
@@ -507,38 +508,53 @@ def usersDelete(request, id):
         # messages.success(request, 'User deleted successfully.')
         return redirect('/users/user-list/') 
 
-
-
-
+ 
 @UserLogin
 def studentsFeeCollection(request):
+    class_list = models.ClassList.objects.filter(status=True).order_by('rank') 
+    # year_list = year_array 
+
     if request.method == 'POST':
-        student_id = request.POST.get('student_id')
-        fee_head_id = request.POST.get('fee_head_id')
-        amount = request.POST.get('amount')
-        date = request.POST.get('date')
-        is_paid = request.POST.get('is_paid') == 'on'
+        class_id = request.POST.get('class_id')
+        # year = request.POST.get('year')
+        roll = request.POST.get('roll')
         
-        student = StudentList.objects.get(id=student_id)
-        fee_head = FeeHead.objects.get(id=fee_head_id)
+        # Initialize an empty queryset
+        fees_type_list = models.ClassWiseFeeSetup.objects.all()
+
+        # Apply filters based on the provided data
+        if class_id:
+            class_id = int(class_id)
+            fees_type_list = fees_type_list.filter(class_name_id=class_id)
         
-        StudentFee.objects.create(
-            student=student,
-            fee_head=fee_head,
-            amount=amount,
-            date=date,
-            is_paid=is_paid
-        )
-        return redirect('fee_list')
-    
-    students = StudentList.objects.all()
-    fee_heads = FeeHead.objects.all()
-    return render(request, 'dashboard/students/fee_collection.html', {'students': students, 'fee_heads': fee_heads})
+        # if year:
+        #     year = year
+        #     print("Year type: ", type(year))
+        #     fees_type_list = fees_type_list.filter(year=year)
+        
+        if roll:
+            fees_type_list = fees_type_list.filter(roll=roll)
+     
+        context = { 
+            'class_list': class_list,
+            # 'year_list': year_list,
+            'fees_type_list': fees_type_list,
+            'class_id': class_id,
+            # 'year': year,
+            'roll': roll,
+        }
+        return render(request, 'dashboard/students/fee_collection.html', context)
+
+    else:
+        context = { 
+            'class_list': class_list, 
+        } 
+        return render(request, 'dashboard/students/fee_collection.html', context)
 
 
 
 @UserLogin
-def fee_list(request):
-    student_fees = StudentFee.objects.all()
-    return render(request, 'dashboard/students/fee_list.html', {'student_fees': student_fees})
+def studentFeeCollectionList(request):
+    # student_fees = StudentFee.objects.all()
+    return render(request, 'dashboard/students/fee_collection_list.html')
     
