@@ -180,6 +180,37 @@ class ClassWiseFeeSetup(models.Model):
 
 
 
+# class StudentFee(models.Model):
+#     class_wise_fee              = models.ForeignKey(ClassWiseFeeSetup, on_delete=models.CASCADE, blank = True, null = True)
+#     stid                        = models.ForeignKey(Student, on_delete=models.CASCADE)
+#     fee_type                    = models.ForeignKey(FeeTypes, on_delete=models.CASCADE)
+#     version_name                = models.ForeignKey(SchoolVersion, on_delete = models.CASCADE)
+#     class_name                  = models.ForeignKey(ClassInfo, on_delete=models.CASCADE)
+#     shift_name                  = models.ForeignKey(Shift, on_delete=models.CASCADE)
+#     section_name                = models.ForeignKey(Section, on_delete=models.CASCADE, blank=True, null=True)
+#     group_type                  = models.ForeignKey(GroupTypeList, on_delete = models.CASCADE, blank=True, null=True)
+#     year                        = models.ForeignKey(Years, on_delete=models.CASCADE)
+#     exam_name                   = models.ForeignKey(ExamInfo, on_delete=models.CASCADE, blank = True, null = True)
+#     exam_payable_amount         = models.FloatField(default = 0) 
+#     installment_name            = models.ForeignKey(Installment, on_delete=models.CASCADE, blank = True, null = True) #Installment wise fee collection will complete later
+#     installment_payable_amount  = models.FloatField(default = 0)#This logic is noted down and Saddam vai knows it
+#     fee_amount                  = models.FloatField(default = 0)
+#     due_amount                  = models.FloatField(default = 0)
+#     discount_amount             = models.FloatField(default = 0)
+#     due_date                    = models.DateField(auto_now_add=False, blank = True, null = True)
+#     insert_date                 = models.DateTimeField(auto_now_add=True)
+#     last_update                 = models.DateTimeField(auto_now=True)
+#     insert_by                   = models.IntegerField(default=0)
+#     update_by                   = models.IntegerField(default=0)    
+#     status                      = models.BooleanField(default=0)
+
+#     def __str__(self):
+#         return str(self.stid)
+
+#     class Meta:
+#         db_table = 'student_fee' 
+#         verbose_name = "Student Fee"
+#         verbose_name_plural = "Student Fees"
 
 
 
