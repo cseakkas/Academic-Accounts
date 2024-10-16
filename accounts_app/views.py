@@ -515,32 +515,23 @@ def studentsFeeCollection(request):
     # year_list = year_array 
 
     if request.method == 'POST':
-        class_id = request.POST.get('class_id')
-        # year = request.POST.get('year')
+        class_id = request.POST.get('class_id') 
         roll = request.POST.get('roll')
-        
-        # Initialize an empty queryset
+         
         fees_type_list = models.ClassWiseFeeSetup.objects.all()
-
-        # Apply filters based on the provided data
+ 
         if class_id:
             class_id = int(class_id)
             fees_type_list = fees_type_list.filter(class_name_id=class_id)
-        
-        # if year:
-        #     year = year
-        #     print("Year type: ", type(year))
-        #     fees_type_list = fees_type_list.filter(year=year)
-        
+         
         if roll:
-            fees_type_list = fees_type_list.filter(roll=roll)
+            fees_type_list = fees_type_list.filter(class_name__roll=roll)
      
         context = { 
             'class_list': class_list,
             # 'year_list': year_list,
             'fees_type_list': fees_type_list,
-            'class_id': class_id,
-            # 'year': year,
+            'class_id': class_id, 
             'roll': roll,
         }
         return render(request, 'dashboard/students/fee_collection.html', context)
