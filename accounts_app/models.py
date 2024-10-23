@@ -104,6 +104,7 @@ class StudentList(models.Model):
     class_name = models.ForeignKey(ClassList, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
+    student_id = models.CharField(max_length=30, unique=True)
     roll = models.CharField(max_length=50, unique=True)
     reg_no = models.CharField(max_length=50, unique=True)
     date_of_birth = models.DateField()

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 100px;
+            height: auto;
+        }
+        .profile-details {
+            margin-bottom: 20px;
+        }
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .details-table th, .details-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .details-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+        }
+        .two-column {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        .column {
+            width: 48%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="path/to/logo.png" alt="Logo"> <!-- Replace with your logo path -->
+            <h1>Student Profile</h1>
+            <div></div>
+        </div>
+
+        <div class="profile-details">
+            <h2>Personal Information</h2>
+            <table class="details-table">
+                <tr>
+                    <th>Name</th>
+                    <td>{{ student.first_name }} {{ student.last_name }}</td>
+                </tr>
+                <tr>
+                    <th>Student ID</th>
+                    <td>{{ student.student_id }}</td>
+                </tr>
+                <tr>
+                    <th>Roll</th>
+                    <td>{{ student.roll }}</td>
+                </tr>
+                <tr>
+                    <th>Registration No</th>
+                    <td>{{ student.reg_no }}</td>
+                </tr>
+                <tr>
+                    <th>Date of Birth</th>
+                    <td>{{ student.date_of_birth }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>Contact Information</h2>
+        <div class="two-column">
+            <div class="column">
+                <p><strong>Email:</strong> {{ student.email }}</p>
+                <p><strong>Phone Number:</strong> {{ student.phone_number }}</p>
+            </div>
+            <div class="column">
+                <p><strong>Address:</strong> {{ student.address }}</p>
+            </div>
+        </div>
+
+        <h2>Family Information</h2>
+        <div class="two-column">
+            <div class="column">
+                <p><strong>Father:</strong> {{ student.father_name }}</p>
+                <p><strong>Mother:</strong> {{ student.mother_name }}</p>
+            </div>
+            <div class="column">
+                <p><strong>Guardian:</strong> {{ student.guardian_name }}</p>
+            </div>
+        </div>
+
+        <h2>Class Information</h2>
+        <p><strong>Class:</strong> Class {{ student.class_name.class_name }}</p>
+        <p><strong>Institution:</strong> {{ student.institution }}</p>
+        <p><strong>Year:</strong> {{ student.year }}</p>
+
+        <div class="footer">
+            <p>Generated on {{ now|date:"Y-m-d H:i" }}</p>
+        </div>
+    </div>
+</body>
+</html>

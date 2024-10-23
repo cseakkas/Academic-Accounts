@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from . import models 
 from django.contrib import messages
 from accounts_app.decorators import UserLogin
@@ -7,6 +7,7 @@ import openpyxl, csv
 
 from openpyxl.utils import get_column_letter
 from django.http import HttpResponse
+from xhtml2pdf import pisa
 
 # Create your views here.
 
@@ -271,6 +272,35 @@ def studentUpdate(request, id):
     }
     return render(request, 'dashboard/settings/student_edit.html', context)
 
+
+@UserLogin
+def studentDetails(request, student_id):
+    student = get_object_or_404(models.StudentList, student_id=student_id)
+    
+    context = {
+        'student': student
+    }
+    return render(request, 'dashboard/settings/student_details.html', context)
+ 
+
+from django.template.loader import render_to_string 
+def print_student_profile(request, student_id):
+    student = get_object_or_404(models.StudentList, student_id=student_id)
+  
+    # Render the HTML template for the PDF
+    html_string = render_to_string('dashboard/settings/student_profile_pdf.html', {'student': student})
+    
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="student_profile_{student_id}.pdf"'
+    
+    # Create PDF from the HTML
+    pisa_status = pisa.CreatePDF(html_string, dest=response)
+    
+    # Check if PDF was created successfully
+    if pisa_status.err:
+        return HttpResponse('Error generating PDF', status=400)
+    
+    return response
 
 
 @UserLogin

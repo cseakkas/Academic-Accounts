@@ -15,6 +15,8 @@ urlpatterns = [
     path('settings/student-add/', views.studentAdd, name="studentAdd"),
     path('settings/student-list/', views.studentList, name="studentList"),
     path('settings/student/<int:id>/edit/', views.studentUpdate, name="studentUpdate"),
+    path('settings/student/<str:student_id>/details/', views.studentDetails, name="studentUpdate"),
+    path('settings/student/<str:student_id>/print/', views.print_student_profile, name='print_student_profile'),
     path('settings/export-students/', views.export_students_xlsx, name='export_students_xlsx'),
 
     path('settings/chart-of-accounts-add/', views.ChartOfAccountsAdd, name="ChartOfAccountsAdd"),
