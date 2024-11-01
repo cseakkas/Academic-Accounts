@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2024 at 07:30 PM
+-- Generation Time: Nov 01, 2024 at 08:59 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -358,7 +358,29 @@ INSERT INTO `class_wise_fee_setup` (`id`, `class_name_id`, `year`, `fees_head_id
 (85, 4, '2024', 20, 250, 1, '2024-10-16 14:34:39.845207', NULL),
 (86, 4, '2024', 21, 250, 1, '2024-10-16 14:34:39.848204', NULL),
 (87, 4, '2024', 22, 250, 1, '2024-10-16 14:34:39.850202', NULL),
-(88, 4, '2024', 23, 250, 1, '2024-10-16 14:34:39.853204', NULL);
+(88, 4, '2024', 23, 250, 1, '2024-10-16 14:34:39.853204', NULL),
+(89, 4, '2025', 2, 500, 1, '2024-10-25 17:33:13.587370', NULL),
+(90, 4, '2025', 3, 150, 1, '2024-10-25 17:33:13.595378', NULL),
+(91, 4, '2025', 4, 150, 1, '2024-10-25 17:33:13.598362', NULL),
+(92, 4, '2025', 5, 100, 1, '2024-10-25 17:33:13.600360', NULL),
+(93, 4, '2025', 6, 0, 1, '2024-10-25 17:33:13.603524', NULL),
+(94, 4, '2025', 7, 0, 1, '2024-10-25 17:33:13.605354', NULL),
+(95, 4, '2025', 8, 0, 1, '2024-10-25 17:33:13.607375', NULL),
+(96, 4, '2025', 9, 0, 1, '2024-10-25 17:33:13.614350', NULL),
+(97, 4, '2025', 10, 0, 1, '2024-10-25 17:33:13.617348', NULL),
+(98, 4, '2025', 11, 0, 1, '2024-10-25 17:33:13.620349', NULL),
+(99, 4, '2025', 12, 0, 1, '2024-10-25 17:33:13.623346', NULL),
+(100, 4, '2025', 13, 0, 1, '2024-10-25 17:33:13.627345', NULL),
+(101, 4, '2025', 14, 0, 1, '2024-10-25 17:33:13.633341', NULL),
+(102, 4, '2025', 15, 0, 1, '2024-10-25 17:33:13.636340', NULL),
+(103, 4, '2025', 16, 0, 1, '2024-10-25 17:33:13.638358', NULL),
+(104, 4, '2025', 17, 0, 1, '2024-10-25 17:33:13.640358', NULL),
+(105, 4, '2025', 18, 0, 1, '2024-10-25 17:33:13.645334', NULL),
+(106, 4, '2025', 19, 0, 1, '2024-10-25 17:33:13.647331', NULL),
+(107, 4, '2025', 20, 0, 1, '2024-10-25 17:33:13.650332', NULL),
+(108, 4, '2025', 21, 0, 1, '2024-10-25 17:33:13.653329', NULL),
+(109, 4, '2025', 22, 0, 1, '2024-10-25 17:33:13.658328', NULL),
+(110, 4, '2025', 23, 0, 1, '2024-10-25 17:33:13.662325', NULL);
 
 -- --------------------------------------------------------
 
@@ -527,7 +549,9 @@ CREATE TABLE `django_session` (
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
 ('4tlkmyhln7pyk6dz64b0sn8dtmds2wvb', '.eJxdi00OwiAYRK_SfOsG5R-60gP0DIS0iNhSGqgr492lqW7czbw384JncdmEETrcHtlFG2bowE6TLWgoTuiL3xkaUoQWbiGXzSw2ujrqR9Rc9yF83_-86YP9ufWetlTlUXLyYXYnqQXTmFGDiRZYEqUkoVxxYgijmlVApdSc8DOWwizosXp4fwB7IDhg:1sua5z:vRvbghi8g2FSzQaj3ciouZgpTMOF7Zp76PZBMBUPkbE', '2024-10-12 16:14:59.194292'),
 ('7tpc1a2mwqg2c9kipork7pa81k0n5rjq', '.eJxdj0tOxDAQRK8yyhqZ-G-zAvY5g9Wx24knH4_izApxdxyRQcCuu6r6qfqjcXDfR3cvuLkUmpeGNk-_tR78hOthhCusQyY-r_uWenJEyOkW0uWA8_uZ_QMYoYz1uqVa9tSjDRRMVIgIMRhNo0ChwQceo7AsIkPlrTJR9LxVgnMPkhov2wr96UjPGRdIc2XDNEEhvqCyr8Oh1ZJLPYhpK7tbYcEa6gK5vB3BB-m_fukSPLzbmPdcze9ly0Oa8VlbJSwV3FFmFdXMGM24NJI5JrgVVeBaW8lk_VW5lVxvQ_P5BThgcDA:1sldqE:I_GOfiUFw_KtXfyk5GIlzDwTdespfr9ApasH-SEAj1M', '2024-09-18 00:25:46.440750'),
+('f9296rbigbmraeefbuuzw92amx5k7xhc', '.eJxdi00OwiAYRK_SfOsG5R-60gP0DIS0iNhSGqgr492lqW7czbw384JncdmEETrcHtlFG2bowE6TLWgoTuiL3xkaUoQWbiGXzSw2ujrqR9Rc9yF83_-86YP9ufWetlTlUXLyYXYnqQXTmFGDiRZYEqUkoVxxYgijmlVApdSc8DOWwizosXp4fwB7IDhg:1t4O6u:KEXRLFZkzDoOIivBvyovvq_cyfcocE4sMuGGUUwX8MM', '2024-11-08 17:28:28.759652'),
 ('is1h19td5hv71tew50am37nrme5zzp2n', '.eJxdjs1uwyAQhF8l4hxRs_ws5NT27mdAi01sxz9ExjlVffdixa2U3nbnmxnNF3vkuPqhZRdxft5xpmFiF0bjSJk3ORr33u0ab9LMzuw6rHnzC82xmOqWnz52IzvS__VTPdAvu_dpSwU-nzV1wxTf0BnlhJJegDMCwVoEqa0GD0o6VQSJ6DToSqDxC7_du9Ln6bH1_m87g1ctUDPGZQftjZYulenLtg6B7xZ-0Mzr1Mbp8_C-FPSU-5J2AkVQjaiwxYAAGLVGbdEJKiUgyZS5AcwVRVUBkRZaKhPM1QpolLXs-wcZj24V:1swNbF:l1aAnIn0qGMzto7HMzWzrhSZVheqJHNcw9Euup8bUjo', '2024-10-17 15:18:41.267629'),
+('lmecdga5sujwbz9utszyk2fukshcf4b5', '.eJxdi00OwiAYRK_SfOsG5R-60gP0DIS0iNhSGqgr492lqW7czbw384JncdmEETrcHtlFG2bowE6TLWgoTuiL3xkaUoQWbiGXzSw2ujrqR9Rc9yF83_-86YP9ufWetlTlUXLyYXYnqQXTmFGDiRZYEqUkoVxxYgijmlVApdSc8DOWwizosXp4fwB7IDhg:1t3cPw:1ZzWL9AOuiSsrw3S34MYR63R6bNZUDkV9VV9CGdXrjQ', '2024-11-06 14:32:56.963888'),
 ('rlh2xxl6bhpwz0rwpftr8sxst3ig7029', '.eJxdjs1uwyAQhF8l4hxRs_ws5NT27mdAi01sxz9ExjlVffdixa2U3nbnmxnNF3vkuPqhZRdxft5xpmFiF0bjSJk3ORr33u0ab9LMzuw6rHnzC82xmOqWnz52IzvS__VTPdAvu_dpSwU-nzV1wxTf0BnlhJJegDMCwVoEqa0GD0o6VQSJ6DToSqDxC7_du9Ln6bH1_m87g1ctUDPGZQftjZYulenLtg6B7xZ-0Mzr1Mbp8_C-FPSU-5J2AkVQjaiwxYAAGLVGbdEJKiUgyZS5AcwVRVUBkRZaKhPM1QpolLXs-wcZj24V:1suxts:BA2UAyX1ZTg3cOMnUxKw9xWfkGPV11Uagox4kRNQNCc', '2024-10-13 17:40:04.012169'),
 ('ump71q7giffv1vnznhqs70184myavgcg', '.eJxdi00OwiAYRK_SfOsG5R-60gP0DIS0iNhSGqgr492lqW7czbw384JncdmEETrcHtlFG2bowE6TLWgoTuiL3xkaUoQWbiGXzSw2ujrqR9Rc9yF83_-86YP9ufWetlTlUXLyYXYnqQXTmFGDiRZYEqUkoVxxYgijmlVApdSc8DOWwizosXp4fwB7IDhg:1svzrn:qHFN_zhwNdlUtEh0g5HOdIhft-ddl7a8aBa5apmderE', '2024-10-16 13:58:11.514320'),
 ('w3veu8pt58kgry04q0bpra54vgmy9a56', '.eJxdi00OwiAYRK_SfOsG5R-60gP0DIS0iNhSGqgr492lqW7czbw384JncdmEETrcHtlFG2bowE6TLWgoTuiL3xkaUoQWbiGXzSw2ujrqR9Rc9yF83_-86YP9ufWetlTlUXLyYXYnqQXTmFGDiRZYEqUkoVxxYgijmlVApdSc8DOWwizosXp4fwB7IDhg:1stS1z:3Ih3D-SndKRYkT3rXlWPhhasF6cip4JUB-gjT7Asbu8', '2024-10-09 13:26:11.308355');
@@ -609,6 +633,7 @@ CREATE TABLE `student_list` (
   `id` bigint(20) NOT NULL,
   `first_name` varchar(100) NOT NULL,
   `last_name` varchar(100) NOT NULL,
+  `student_id` varchar(30) NOT NULL,
   `roll` varchar(50) NOT NULL,
   `reg_no` varchar(50) NOT NULL,
   `date_of_birth` date NOT NULL,
@@ -627,12 +652,141 @@ CREATE TABLE `student_list` (
 -- Dumping data for table `student_list`
 --
 
-INSERT INTO `student_list` (`id`, `first_name`, `last_name`, `roll`, `reg_no`, `date_of_birth`, `email`, `phone_number`, `address`, `father_name`, `mother_name`, `guardian_name`, `class_name_id`, `created`, `status`) VALUES
-(1, 'Xandra', 'Zimmerman', '01', '62', '2024-10-10', 'datuvi@mailinator.com', '0197779-9574', 'Aliqua Eos ipsum v', 'Ulysses Pruitt', 'Carson Stewart', 'Autumn Garrett', 1, '2024-10-03 18:59:40.582582', 1),
-(2, 'Brielle', 'Middleton', '81', '82', '2018-10-04', 'zomyxora@mailinator.com', '01811-9376', 'Esse aut dolorem re', 'Ori Bishop', 'Sharon Alford', 'Hadassah Hudson', 3, '2024-09-28 18:38:23.928949', 1),
-(3, 'Logan', 'Powers', '83', '48', '1988-09-18', 'neribiw@mailinator.com', '01949-1355', 'Excepteur voluptate ', 'Brennan Flowers', 'Rhiannon Britt', 'Cairo Hanson', 4, '2024-09-28 18:38:34.380835', 1),
-(4, 'Ross', 'Pope', '68', '76', '2003-07-21', 'tytuza@mailinator.com', '+1 (267) 443-54', 'Numquam quia fugiat', 'Hamish Skinner', 'Daryl Thomas', 'Jacob Schneider', 2, '2024-10-02 18:15:58.950802', 1),
-(5, 'Coby', 'Chen', '94', '99', '1986-07-15', 'rekogenijo@mailinator.com', '0214667-2594', 'Nulla consequatur a', 'Leslie Paul', 'Bree Casey', 'Macaulay Villarreal', 1, '2024-10-02 18:16:19.401108', 1);
+INSERT INTO `student_list` (`id`, `first_name`, `last_name`, `student_id`, `roll`, `reg_no`, `date_of_birth`, `email`, `phone_number`, `address`, `father_name`, `mother_name`, `guardian_name`, `class_name_id`, `created`, `status`) VALUES
+(1, 'Student1', 'LastName1', 'S0001', '001', 'R001', '2010-01-01', 'student1@mail.com', '01900000001', 'Address 1', 'Father1', 'Mother1', 'Guardian1', 5, '2024-10-23 20:45:19.000000', 1),
+(2, 'Student2', 'LastName2', 'S0002', '002', 'R002', '2010-02-01', 'student2@mail.com', '01900000002', 'Address 2', 'Father2', 'Mother2', 'Guardian2', 5, '2024-10-23 20:45:19.000000', 1),
+(3, 'Student3', 'LastName3', 'S0003', '003', 'R003', '2010-03-01', 'student3@mail.com', '01900000003', 'Address 3', 'Father3', 'Mother3', 'Guardian3', 5, '2024-10-23 20:45:19.000000', 1),
+(4, 'Student4', 'LastName4', 'S0004', '004', 'R004', '2010-04-01', 'student4@mail.com', '01900000004', 'Address 4', 'Father4', 'Mother4', 'Guardian4', 5, '2024-10-23 20:45:19.000000', 1),
+(5, 'Student5', 'LastName5', 'S0005', '005', 'R005', '2010-05-01', 'student5@mail.com', '01900000005', 'Address 5', 'Father5', 'Mother5', 'Guardian5', 5, '2024-10-23 20:45:19.000000', 1),
+(6, 'Student6', 'LastName6', 'S0006', '006', 'R006', '2010-06-01', 'student6@mail.com', '01900000006', 'Address 6', 'Father6', 'Mother6', 'Guardian6', 5, '2024-10-23 20:45:19.000000', 1),
+(7, 'Student7', 'LastName7', 'S0007', '007', 'R007', '2010-07-01', 'student7@mail.com', '01900000007', 'Address 7', 'Father7', 'Mother7', 'Guardian7', 5, '2024-10-23 20:45:19.000000', 1),
+(8, 'Student8', 'LastName8', 'S0008', '008', 'R008', '2010-08-01', 'student8@mail.com', '01900000008', 'Address 8', 'Father8', 'Mother8', 'Guardian8', 5, '2024-10-23 20:45:19.000000', 1),
+(9, 'Student9', 'LastName9', 'S0009', '009', 'R009', '2010-09-01', 'student9@mail.com', '01900000009', 'Address 9', 'Father9', 'Mother9', 'Guardian9', 5, '2024-10-23 20:45:19.000000', 1),
+(10, 'Student10', 'LastName10', 'S0010', '010', 'R010', '2010-10-01', 'student10@mail.com', '01900000010', 'Address 10', 'Father10', 'Mother10', 'Guardian10', 5, '2024-10-23 20:45:19.000000', 1),
+(11, 'Student11', 'LastName11', 'S0011', '011', 'R011', '2010-11-01', 'student11@mail.com', '01900000011', 'Address 11', 'Father11', 'Mother11', 'Guardian11', 5, '2024-10-23 20:45:19.000000', 1),
+(12, 'Student12', 'LastName12', 'S0012', '012', 'R012', '2010-12-01', 'student12@mail.com', '01900000012', 'Address 12', 'Father12', 'Mother12', 'Guardian12', 5, '2024-10-23 20:45:19.000000', 1),
+(13, 'Student13', 'LastName13', 'S0013', '013', 'R013', '2010-01-02', 'student13@mail.com', '01900000013', 'Address 13', 'Father13', 'Mother13', 'Guardian13', 5, '2024-10-23 20:45:19.000000', 1),
+(14, 'Student14', 'LastName14', 'S0014', '014', 'R014', '2010-02-02', 'student14@mail.com', '01900000014', 'Address 14', 'Father14', 'Mother14', 'Guardian14', 5, '2024-10-23 20:45:19.000000', 1),
+(15, 'Student15', 'LastName15', 'S0015', '015', 'R015', '2010-03-02', 'student15@mail.com', '01900000015', 'Address 15', 'Father15', 'Mother15', 'Guardian15', 5, '2024-10-23 20:45:19.000000', 1),
+(16, 'Student16', 'LastName16', 'S0016', '016', 'R016', '2010-04-02', 'student16@mail.com', '01900000016', 'Address 16', 'Father16', 'Mother16', 'Guardian16', 5, '2024-10-23 20:45:19.000000', 1),
+(17, 'Student17', 'LastName17', 'S0017', '017', 'R017', '2010-05-02', 'student17@mail.com', '01900000017', 'Address 17', 'Father17', 'Mother17', 'Guardian17', 5, '2024-10-23 20:45:19.000000', 1),
+(18, 'Student18', 'LastName18', 'S0018', '018', 'R018', '2010-06-02', 'student18@mail.com', '01900000018', 'Address 18', 'Father18', 'Mother18', 'Guardian18', 5, '2024-10-23 20:45:19.000000', 1),
+(19, 'Student19', 'LastName19', 'S0019', '019', 'R019', '2010-07-02', 'student19@mail.com', '01900000019', 'Address 19', 'Father19', 'Mother19', 'Guardian19', 5, '2024-10-23 20:45:19.000000', 1),
+(20, 'Student20', 'LastName20', 'S0020', '020', 'R020', '2010-08-02', 'student20@mail.com', '01900000020', 'Address 20', 'Father20', 'Mother20', 'Guardian20', 5, '2024-10-23 20:45:19.000000', 1),
+(21, 'Student21', 'LastName21', 'S0021', '021', 'R021', '2010-09-02', 'student21@mail.com', '01900000021', 'Address 21', 'Father21', 'Mother21', 'Guardian21', 5, '2024-10-23 20:45:19.000000', 1),
+(22, 'Student22', 'LastName22', 'S0022', '022', 'R022', '2010-10-02', 'student22@mail.com', '01900000022', 'Address 22', 'Father22', 'Mother22', 'Guardian22', 5, '2024-10-23 20:45:19.000000', 1),
+(23, 'Student23', 'LastName23', 'S0023', '023', 'R023', '2010-11-02', 'student23@mail.com', '01900000023', 'Address 23', 'Father23', 'Mother23', 'Guardian23', 5, '2024-10-23 20:45:19.000000', 1),
+(24, 'Student24', 'LastName24', 'S0024', '024', 'R024', '2010-12-02', 'student24@mail.com', '01900000024', 'Address 24', 'Father24', 'Mother24', 'Guardian24', 5, '2024-10-23 20:45:19.000000', 1),
+(25, 'Student25', 'LastName25', 'S0025', '025', 'R025', '2010-01-03', 'student25@mail.com', '01900000025', 'Address 25', 'Father25', 'Mother25', 'Guardian25', 5, '2024-10-23 20:45:19.000000', 1),
+(26, 'Student26', 'LastName26', 'S0026', '026', 'R026', '2010-02-03', 'student26@mail.com', '01900000026', 'Address 26', 'Father26', 'Mother26', 'Guardian26', 5, '2024-10-23 20:45:19.000000', 1),
+(27, 'Student27', 'LastName27', 'S0027', '027', 'R027', '2010-03-03', 'student27@mail.com', '01900000027', 'Address 27', 'Father27', 'Mother27', 'Guardian27', 5, '2024-10-23 20:45:19.000000', 1),
+(28, 'Student28', 'LastName28', 'S0028', '028', 'R028', '2010-04-03', 'student28@mail.com', '01900000028', 'Address 28', 'Father28', 'Mother28', 'Guardian28', 5, '2024-10-23 20:45:19.000000', 1),
+(29, 'Student29', 'LastName29', 'S0029', '029', 'R029', '2010-05-03', 'student29@mail.com', '01900000029', 'Address 29', 'Father29', 'Mother29', 'Guardian29', 5, '2024-10-23 20:45:19.000000', 1),
+(30, 'John', 'Smith', 'SID001', 'R001', 'REG001', '2010-01-01', 'john.smith1@example.com', '0123456789', '123 Main St', 'Father Smith', 'Mother Smith', 'Guardian Smith', 6, '2024-10-23 20:51:25.000000', 1),
+(31, 'Jane', 'Doe', 'SID002', 'R002', 'REG002', '2010-02-02', 'jane.doe2@example.com', '0123456790', '456 Main St', 'Father Doe', 'Mother Doe', 'Guardian Doe', 6, '2024-10-23 20:51:25.000000', 1),
+(32, 'Alice', 'Brown', 'SID003', 'R003', 'REG003', '2010-03-03', 'alice.brown3@example.com', '0123456791', '789 Main St', 'Father Brown', 'Mother Brown', 'Guardian Brown', 6, '2024-10-23 20:51:25.000000', 1),
+(33, 'Bob', 'Johnson', 'SID004', 'R004', 'REG004', '2010-04-04', 'bob.johnson4@example.com', '0123456792', '101 Main St', 'Father Johnson', 'Mother Johnson', 'Guardian Johnson', 6, '2024-10-23 20:51:25.000000', 1),
+(34, 'Charlie', 'Williams', 'SID005', 'R005', 'REG005', '2010-05-05', 'charlie.williams5@example.com', '0123456793', '202 Main St', 'Father Williams', 'Mother Williams', 'Guardian Williams', 6, '2024-10-23 20:51:25.000000', 1),
+(35, 'David', 'Jones', 'SID006', 'R006', 'REG006', '2010-06-06', 'david.jones6@example.com', '0123456794', '303 Main St', 'Father Jones', 'Mother Jones', 'Guardian Jones', 6, '2024-10-23 20:51:25.000000', 1),
+(36, 'Emily', 'Garcia', 'SID007', 'R007', 'REG007', '2010-07-07', 'emily.garcia7@example.com', '0123456795', '404 Main St', 'Father Garcia', 'Mother Garcia', 'Guardian Garcia', 6, '2024-10-23 20:51:25.000000', 1),
+(37, 'Frank', 'Martinez', 'SID008', 'R008', 'REG008', '2010-08-08', 'frank.martinez8@example.com', '0123456796', '505 Main St', 'Father Martinez', 'Mother Martinez', 'Guardian Martinez', 6, '2024-10-23 20:51:25.000000', 1),
+(38, 'Grace', 'Rodriguez', 'SID009', 'R009', 'REG009', '2010-09-09', 'grace.rodriguez9@example.com', '0123456797', '606 Main St', 'Father Rodriguez', 'Mother Rodriguez', 'Guardian Rodriguez', 6, '2024-10-23 20:51:25.000000', 1),
+(39, 'Henry', 'Lee', 'SID010', 'R010', 'REG010', '2010-10-10', 'henry.lee10@example.com', '0123456798', '707 Main St', 'Father Lee', 'Mother Lee', 'Guardian Lee', 6, '2024-10-23 20:51:25.000000', 1),
+(40, 'Ivy', 'Clark', 'SID011', 'R011', 'REG011', '2010-11-11', 'ivy.clark11@example.com', '0123456799', '808 Main St', 'Father Clark', 'Mother Clark', 'Guardian Clark', 6, '2024-10-23 20:51:25.000000', 1),
+(41, 'Jack', 'Lewis', 'SID012', 'R012', 'REG012', '2010-12-12', 'jack.lewis12@example.com', '0123456700', '909 Main St', 'Father Lewis', 'Mother Lewis', 'Guardian Lewis', 6, '2024-10-23 20:51:25.000000', 1),
+(42, 'Katie', 'Walker', 'SID013', 'R013', 'REG013', '2011-01-01', 'katie.walker13@example.com', '0123456701', '1010 Main St', 'Father Walker', 'Mother Walker', 'Guardian Walker', 6, '2024-10-23 20:51:25.000000', 1),
+(43, 'Liam', 'Young', 'SID014', 'R014', 'REG014', '2011-02-02', 'liam.young14@example.com', '0123456702', '111 Main St', 'Father Young', 'Mother Young', 'Guardian Young', 6, '2024-10-23 20:51:25.000000', 1),
+(44, 'Mia', 'Harris', 'SID015', 'R015', 'REG015', '2011-03-03', 'mia.harris15@example.com', '0123456703', '222 Main St', 'Father Harris', 'Mother Harris', 'Guardian Harris', 6, '2024-10-23 20:51:25.000000', 1),
+(45, 'Noah', 'Hall', 'SID016', 'R016', 'REG016', '2011-04-04', 'noah.hall16@example.com', '0123456704', '333 Main St', 'Father Hall', 'Mother Hall', 'Guardian Hall', 6, '2024-10-23 20:51:25.000000', 1),
+(46, 'Olivia', 'Allen', 'SID017', 'R017', 'REG017', '2011-05-05', 'olivia.allen17@example.com', '0123456705', '444 Main St', 'Father Allen', 'Mother Allen', 'Guardian Allen', 6, '2024-10-23 20:51:25.000000', 1),
+(47, 'Paul', 'Scott', 'SID018', 'R018', 'REG018', '2011-06-06', 'paul.scott18@example.com', '0123456706', '555 Main St', 'Father Scott', 'Mother Scott', 'Guardian Scott', 6, '2024-10-23 20:51:25.000000', 1),
+(48, 'Quinn', 'Torres', 'SID019', 'R019', 'REG019', '2011-07-07', 'quinn.torres19@example.com', '0123456707', '666 Main St', 'Father Torres', 'Mother Torres', 'Guardian Torres', 6, '2024-10-23 20:51:25.000000', 1),
+(49, 'Ryan', 'Nguyen', 'SID020', 'R020', 'REG020', '2011-08-08', 'ryan.nguyen20@example.com', '0123456708', '777 Main St', 'Father Nguyen', 'Mother Nguyen', 'Guardian Nguyen', 6, '2024-10-23 20:51:25.000000', 1),
+(50, 'Zara', 'Wilson', 'SID050', 'R050', 'REG050', '2012-10-10', 'zara.wilson50@example.com', '0123456750', '5050 Main St', 'Father Wilson', 'Mother Wilson', 'Guardian Wilson', 6, '2024-10-23 20:51:25.000000', 1),
+(51, 'Aiden', 'Scott', 'SID051', 'R051', 'REG051', '2011-01-01', 'aiden.scott51@example.com', '0123456711', '1001 Main St', 'Father Scott', 'Mother Scott', 'Guardian Scott', 7, '2024-10-23 20:54:37.000000', 1),
+(52, 'Sophia', 'Adams', 'SID052', 'R052', 'REG052', '2011-02-02', 'sophia.adams52@example.com', '0123456712', '1002 Main St', 'Father Adams', 'Mother Adams', 'Guardian Adams', 7, '2024-10-23 20:54:37.000000', 1),
+(53, 'Ethan', 'Baker', 'SID053', 'R053', 'REG053', '2011-03-03', 'ethan.baker53@example.com', '0123456713', '1003 Main St', 'Father Baker', 'Mother Baker', 'Guardian Baker', 7, '2024-10-23 20:54:37.000000', 1),
+(54, 'Isabella', 'Campbell', 'SID054', 'R054', 'REG054', '2011-04-04', 'isabella.campbell54@example.com', '0123456714', '1004 Main St', 'Father Campbell', 'Mother Campbell', 'Guardian Campbell', 7, '2024-10-23 20:54:37.000000', 1),
+(55, 'James', 'Davis', 'SID055', 'R055', 'REG055', '2011-05-05', 'james.davis55@example.com', '0123456715', '1005 Main St', 'Father Davis', 'Mother Davis', 'Guardian Davis', 7, '2024-10-23 20:54:37.000000', 1),
+(56, 'Ava', 'Evans', 'SID056', 'R056', 'REG056', '2011-06-06', 'ava.evans56@example.com', '0123456716', '1006 Main St', 'Father Evans', 'Mother Evans', 'Guardian Evans', 7, '2024-10-23 20:54:37.000000', 1),
+(57, 'Benjamin', 'Garcia', 'SID057', 'R057', 'REG057', '2011-07-07', 'benjamin.garcia57@example.com', '0123456717', '1007 Main St', 'Father Garcia', 'Mother Garcia', 'Guardian Garcia', 7, '2024-10-23 20:54:37.000000', 1),
+(58, 'Lily', 'Hall', 'SID058', 'R058', 'REG058', '2011-08-08', 'lily.hall58@example.com', '0123456718', '1008 Main St', 'Father Hall', 'Mother Hall', 'Guardian Hall', 7, '2024-10-23 20:54:37.000000', 1),
+(59, 'Lucas', 'King', 'SID059', 'R059', 'REG059', '2011-09-09', 'lucas.king59@example.com', '0123456719', '1009 Main St', 'Father King', 'Mother King', 'Guardian King', 7, '2024-10-23 20:54:37.000000', 1),
+(60, 'Chloe', 'Lee', 'SID060', 'R060', 'REG060', '2011-10-10', 'chloe.lee60@example.com', '0123456720', '1010 Main St', 'Father Lee', 'Mother Lee', 'Guardian Lee', 7, '2024-10-23 20:54:37.000000', 1),
+(61, 'Matthew', 'Martinez', 'SID061', 'R061', 'REG061', '2011-11-11', 'matthew.martinez61@example.com', '0123456721', '1011 Main St', 'Father Martinez', 'Mother Martinez', 'Guardian Martinez', 7, '2024-10-23 20:54:37.000000', 1),
+(62, 'Ella', 'Miller', 'SID062', 'R062', 'REG062', '2011-12-12', 'ella.miller62@example.com', '0123456722', '1012 Main St', 'Father Miller', 'Mother Miller', 'Guardian Miller', 7, '2024-10-23 20:54:37.000000', 1),
+(63, 'Jacob', 'Moore', 'SID063', 'R063', 'REG063', '2012-01-01', 'jacob.moore63@example.com', '0123456723', '1013 Main St', 'Father Moore', 'Mother Moore', 'Guardian Moore', 7, '2024-10-23 20:54:37.000000', 1),
+(64, 'Emily', 'Nelson', 'SID064', 'R064', 'REG064', '2012-02-02', 'emily.nelson64@example.com', '0123456724', '1014 Main St', 'Father Nelson', 'Mother Nelson', 'Guardian Nelson', 7, '2024-10-23 20:54:37.000000', 1),
+(65, 'Michael', 'Parker', 'SID065', 'R065', 'REG065', '2012-03-03', 'michael.parker65@example.com', '0123456725', '1015 Main St', 'Father Parker', 'Mother Parker', 'Guardian Parker', 7, '2024-10-23 20:54:37.000000', 1),
+(66, 'Mia', 'Perez', 'SID066', 'R066', 'REG066', '2012-04-04', 'mia.perez66@example.com', '0123456726', '1016 Main St', 'Father Perez', 'Mother Perez', 'Guardian Perez', 7, '2024-10-23 20:54:37.000000', 1),
+(67, 'Daniel', 'Robinson', 'SID067', 'R067', 'REG067', '2012-05-05', 'daniel.robinson67@example.com', '0123456727', '1017 Main St', 'Father Robinson', 'Mother Robinson', 'Guardian Robinson', 7, '2024-10-23 20:54:37.000000', 1),
+(68, 'Grace', 'Sanchez', 'SID068', 'R068', 'REG068', '2012-06-06', 'grace.sanchez68@example.com', '0123456728', '1018 Main St', 'Father Sanchez', 'Mother Sanchez', 'Guardian Sanchez', 7, '2024-10-23 20:54:37.000000', 1),
+(69, 'Jackson', 'Smith', 'SID069', 'R069', 'REG069', '2012-07-07', 'jackson.smith69@example.com', '0123456729', '1019 Main St', 'Father Smith', 'Mother Smith', 'Guardian Smith', 7, '2024-10-23 20:54:37.000000', 1),
+(70, 'Harper', 'Taylor', 'SID070', 'R070', 'REG070', '2012-08-08', 'harper.taylor70@example.com', '0123456730', '1020 Main St', 'Father Taylor', 'Mother Taylor', 'Guardian Taylor', 7, '2024-10-23 20:54:37.000000', 1),
+(71, 'Zachary', 'Williams', 'SID100', 'R100', 'REG100', '2013-10-10', 'zachary.williams100@example.com', '0123456750', '1050 Main St', 'Father Williams', 'Mother Williams', 'Guardian Williams', 7, '2024-10-23 20:54:37.000000', 1),
+(72, 'Ethan', 'Johnson', 'SID101', '01', 'REG101', '2011-01-01', 'ethan.johnson101@example.com', '0123456781', '101 Main St', 'Father Johnson', 'Mother Johnson', 'Guardian Johnson', 8, '2024-10-23 20:58:07.000000', 1),
+(73, 'Sophia', 'Anderson', 'SID102', '02', 'REG102', '2011-02-02', 'sophia.anderson102@example.com', '0123456782', '102 Main St', 'Father Anderson', 'Mother Anderson', 'Guardian Anderson', 8, '2024-10-23 20:58:07.000000', 1),
+(74, 'Liam', 'Harris', 'SID103', '03', 'REG103', '2011-03-03', 'liam.harris103@example.com', '0123456783', '103 Main St', 'Father Harris', 'Mother Harris', 'Guardian Harris', 8, '2024-10-23 20:58:07.000000', 1),
+(75, 'Isabella', 'Clark', 'SID104', '04', 'REG104', '2011-04-04', 'isabella.clark104@example.com', '0123456784', '104 Main St', 'Father Clark', 'Mother Clark', 'Guardian Clark', 8, '2024-10-23 20:58:07.000000', 1),
+(76, 'Noah', 'Davis', 'SID105', '05', 'REG105', '2011-05-05', 'noah.davis105@example.com', '0123456785', '105 Main St', 'Father Davis', 'Mother Davis', 'Guardian Davis', 8, '2024-10-23 20:58:07.000000', 1),
+(77, 'Mia', 'Martinez', 'SID106', '06', 'REG106', '2011-06-06', 'mia.martinez106@example.com', '0123456786', '106 Main St', 'Father Martinez', 'Mother Martinez', 'Guardian Martinez', 8, '2024-10-23 20:58:07.000000', 1),
+(78, 'Lucas', 'Garcia', 'SID107', '07', 'REG107', '2011-07-07', 'lucas.garcia107@example.com', '0123456787', '107 Main St', 'Father Garcia', 'Mother Garcia', 'Guardian Garcia', 8, '2024-10-23 20:58:07.000000', 1),
+(79, 'Charlotte', 'Moore', 'SID108', '08', 'REG108', '2011-08-08', 'charlotte.moore108@example.com', '0123456788', '108 Main St', 'Father Moore', 'Mother Moore', 'Guardian Moore', 8, '2024-10-23 20:58:07.000000', 1),
+(80, 'James', 'Taylor', 'SID109', '09', 'REG109', '2011-09-09', 'james.taylor109@example.com', '0123456789', '109 Main St', 'Father Taylor', 'Mother Taylor', 'Guardian Taylor', 8, '2024-10-23 20:58:07.000000', 1),
+(81, 'Amelia', 'Jackson', 'SID110', '10', 'REG110', '2011-10-10', 'amelia.jackson110@example.com', '0123456790', '110 Main St', 'Father Jackson', 'Mother Jackson', 'Guardian Jackson', 8, '2024-10-23 20:58:07.000000', 1),
+(82, 'Logan', 'White', 'SID111', '11', 'REG111', '2011-11-11', 'logan.white111@example.com', '0123456791', '111 Main St', 'Father White', 'Mother White', 'Guardian White', 8, '2024-10-23 20:58:07.000000', 1),
+(83, 'Ava', 'Thompson', 'SID112', '12', 'REG112', '2011-12-12', 'ava.thompson112@example.com', '0123456792', '112 Main St', 'Father Thompson', 'Mother Thompson', 'Guardian Thompson', 8, '2024-10-23 20:58:07.000000', 1),
+(84, 'Mason', 'Lee', 'SID113', '13', 'REG113', '2012-01-01', 'mason.lee113@example.com', '0123456793', '113 Main St', 'Father Lee', 'Mother Lee', 'Guardian Lee', 8, '2024-10-23 20:58:07.000000', 1),
+(85, 'Ella', 'Perez', 'SID114', '14', 'REG114', '2012-02-02', 'ella.perez114@example.com', '0123456794', '114 Main St', 'Father Perez', 'Mother Perez', 'Guardian Perez', 8, '2024-10-23 20:58:07.000000', 1),
+(86, 'Jacob', 'Walker', 'SID115', '15', 'REG115', '2012-03-03', 'jacob.walker115@example.com', '0123456795', '115 Main St', 'Father Walker', 'Mother Walker', 'Guardian Walker', 8, '2024-10-23 20:58:07.000000', 1),
+(87, 'Lily', 'Gonzalez', 'SID116', '16', 'REG116', '2012-04-04', 'lily.gonzalez116@example.com', '0123456796', '116 Main St', 'Father Gonzalez', 'Mother Gonzalez', 'Guardian Gonzalez', 8, '2024-10-23 20:58:07.000000', 1),
+(88, 'Alexander', 'Hall', 'SID117', '17', 'REG117', '2012-05-05', 'alexander.hall117@example.com', '0123456797', '117 Main St', 'Father Hall', 'Mother Hall', 'Guardian Hall', 8, '2024-10-23 20:58:07.000000', 1),
+(89, 'Harper', 'Allen', 'SID118', '18', 'REG118', '2012-06-06', 'harper.allen118@example.com', '0123456798', '118 Main St', 'Father Allen', 'Mother Allen', 'Guardian Allen', 8, '2024-10-23 20:58:07.000000', 1),
+(90, 'Oliver', 'Young', 'SID119', '19', 'REG119', '2012-07-07', 'oliver.young119@example.com', '0123456799', '119 Main St', 'Father Young', 'Mother Young', 'Guardian Young', 8, '2024-10-23 20:58:07.000000', 1),
+(91, 'Scarlett', 'Hernandez', 'SID120', '20', 'REG120', '2012-08-08', 'scarlett.hernandez120@example.com', '0123456710', '120 Main St', 'Father Hernandez', 'Mother Hernandez', 'Guardian Hernandez', 8, '2024-10-23 20:58:07.000000', 1),
+(92, 'Zoe', 'Wilson', 'SID150', '50', 'REG150', '2013-10-10', 'zoe.wilson150@example.com', '0123456750', '150 Main St', 'Father Wilson', 'Mother Wilson', 'Guardian Wilson', 8, '2024-10-23 20:58:07.000000', 1),
+(114, 'Aiden', 'Williams', 'SID151', '01', 'REG151', '2010-01-01', 'aiden.williams151@example.com', '0123456711', '101 Main St', 'Father Williams', 'Mother Williams', 'Guardian Williams', 9, '2024-10-23 21:03:19.000000', 1),
+(115, 'Olivia', 'Brown', 'SID152', '02', 'REG152', '2010-02-02', 'olivia.brown152@example.com', '0123456712', '102 Main St', 'Father Brown', 'Mother Brown', 'Guardian Brown', 9, '2024-10-23 21:03:19.000000', 1),
+(116, 'Liam', 'Jones', 'SID153', '03', 'REG153', '2010-03-03', 'liam.jones153@example.com', '0123456713', '103 Main St', 'Father Jones', 'Mother Jones', 'Guardian Jones', 9, '2024-10-23 21:03:19.000000', 1),
+(117, 'Emma', 'Garcia', 'SID154', '04', 'REG154', '2010-04-04', 'emma.garcia154@example.com', '0123456714', '104 Main St', 'Father Garcia', 'Mother Garcia', 'Guardian Garcia', 9, '2024-10-23 21:03:19.000000', 1),
+(118, 'Noah', 'Rodriguez', 'SID155', '05', 'REG155', '2010-05-05', 'noah.rodriguez155@example.com', '0123456715', '105 Main St', 'Father Rodriguez', 'Mother Rodriguez', 'Guardian Rodriguez', 9, '2024-10-23 21:03:19.000000', 1),
+(119, 'Sophia', 'Martinez', 'SID156', '06', 'REG156', '2010-06-06', 'sophia.martinez156@example.com', '0123456716', '106 Main St', 'Father Martinez', 'Mother Martinez', 'Guardian Martinez', 9, '2024-10-23 21:03:19.000000', 1),
+(120, 'Lucas', 'Davis', 'SID157', '07', 'REG157', '2010-07-07', 'lucas.davis157@example.com', '0123456717', '107 Main St', 'Father Davis', 'Mother Davis', 'Guardian Davis', 9, '2024-10-23 21:03:19.000000', 1),
+(121, 'Isabella', 'Hernandez', 'SID158', '08', 'REG158', '2010-08-08', 'isabella.hernandez158@example.com', '0123456718', '108 Main St', 'Father Hernandez', 'Mother Hernandez', 'Guardian Hernandez', 9, '2024-10-23 21:03:19.000000', 1),
+(122, 'Mason', 'Miller', 'SID159', '09', 'REG159', '2010-09-09', 'mason.miller159@example.com', '0123456719', '109 Main St', 'Father Miller', 'Mother Miller', 'Guardian Miller', 9, '2024-10-23 21:03:19.000000', 1),
+(123, 'Mia', 'Lopez', 'SID160', '10', 'REG160', '2010-10-10', 'mia.lopez160@example.com', '0123456720', '110 Main St', 'Father Lopez', 'Mother Lopez', 'Guardian Lopez', 9, '2024-10-23 21:03:19.000000', 1),
+(124, 'Ethan', 'Wilson', 'SID161', '11', 'REG161', '2010-11-11', 'ethan.wilson161@example.com', '0123456721', '111 Main St', 'Father Wilson', 'Mother Wilson', 'Guardian Wilson', 9, '2024-10-23 21:03:19.000000', 1),
+(125, 'Ava', 'Moore', 'SID162', '12', 'REG162', '2010-12-12', 'ava.moore162@example.com', '0123456722', '112 Main St', 'Father Moore', 'Mother Moore', 'Guardian Moore', 9, '2024-10-23 21:03:19.000000', 1),
+(126, 'Benjamin', 'Taylor', 'SID163', '13', 'REG163', '2011-01-01', 'benjamin.taylor163@example.com', '0123456723', '113 Main St', 'Father Taylor', 'Mother Taylor', 'Guardian Taylor', 9, '2024-10-23 21:03:19.000000', 1),
+(127, 'Amelia', 'Anderson', 'SID164', '14', 'REG164', '2011-02-02', 'amelia.anderson164@example.com', '0123456724', '114 Main St', 'Father Anderson', 'Mother Anderson', 'Guardian Anderson', 9, '2024-10-23 21:03:19.000000', 1),
+(128, 'Elijah', 'Thomas', 'SID165', '15', 'REG165', '2011-03-03', 'elijah.thomas165@example.com', '0123456725', '115 Main St', 'Father Thomas', 'Mother Thomas', 'Guardian Thomas', 9, '2024-10-23 21:03:19.000000', 1),
+(129, 'Harper', 'Jackson', 'SID166', '16', 'REG166', '2011-04-04', 'harper.jackson166@example.com', '0123456726', '116 Main St', 'Father Jackson', 'Mother Jackson', 'Guardian Jackson', 9, '2024-10-23 21:03:19.000000', 1),
+(130, 'Logan', 'White', 'SID167', '17', 'REG167', '2011-05-05', 'logan.white167@example.com', '0123456727', '117 Main St', 'Father White', 'Mother White', 'Guardian White', 9, '2024-10-23 21:03:19.000000', 1),
+(131, 'Emily', 'Harris', 'SID168', '18', 'REG168', '2011-06-06', 'emily.harris168@example.com', '0123456728', '118 Main St', 'Father Harris', 'Mother Harris', 'Guardian Harris', 9, '2024-10-23 21:03:19.000000', 1),
+(132, 'Oliver', 'Martin', 'SID169', '19', 'REG169', '2011-07-07', 'oliver.martin169@example.com', '0123456729', '119 Main St', 'Father Martin', 'Mother Martin', 'Guardian Martin', 9, '2024-10-23 21:03:19.000000', 1),
+(133, 'Avery', 'Thompson', 'SID170', '20', 'REG170', '2011-08-08', 'avery.thompson170@example.com', '0123456730', '120 Main St', 'Father Thompson', 'Mother Thompson', 'Guardian Thompson', 9, '2024-10-23 21:03:19.000000', 1),
+(134, 'Zoe', 'Martinez', 'SID200', '50', 'REG200', '2012-10-10', 'zoe.martinez200@example.com', '0123456750', '150 Main St', 'Father Martinez', 'Mother Martinez', 'Guardian Martinez', 9, '2024-10-23 21:03:19.000000', 1),
+(135, 'Jackson', 'Harris', 'SID201', '01', 'REG201', '2013-01-01', 'jackson.harris201@example.com', '0123456801', '101 Main St', 'Father Harris', 'Mother Harris', 'Guardian Harris', 2, '2024-10-23 21:05:34.000000', 1),
+(136, 'Lily', 'Clark', 'SID202', '02', 'REG202', '2013-02-02', 'lily.clark202@example.com', '0123456802', '102 Main St', 'Father Clark', 'Mother Clark', 'Guardian Clark', 2, '2024-10-23 21:05:34.000000', 1),
+(137, 'William', 'Lewis', 'SID203', '03', 'REG203', '2013-03-03', 'william.lewis203@example.com', '0123456803', '103 Main St', 'Father Lewis', 'Mother Lewis', 'Guardian Lewis', 2, '2024-10-23 21:05:34.000000', 1),
+(138, 'Grace', 'Robinson', 'SID204', '04', 'REG204', '2013-04-04', 'grace.robinson204@example.com', '0123456804', '104 Main St', 'Father Robinson', 'Mother Robinson', 'Guardian Robinson', 2, '2024-10-23 21:05:34.000000', 1),
+(139, 'Henry', 'Walker', 'SID205', '05', 'REG205', '2013-05-05', 'henry.walker205@example.com', '0123456805', '105 Main St', 'Father Walker', 'Mother Walker', 'Guardian Walker', 2, '2024-10-23 21:05:34.000000', 1),
+(140, 'Aria', 'Young', 'SID206', '06', 'REG206', '2013-06-06', 'aria.young206@example.com', '0123456806', '106 Main St', 'Father Young', 'Mother Young', 'Guardian Young', 2, '2024-10-23 21:05:34.000000', 1),
+(141, 'Sebastian', 'King', 'SID207', '07', 'REG207', '2013-07-07', 'sebastian.king207@example.com', '0123456807', '107 Main St', 'Father King', 'Mother King', 'Guardian King', 2, '2024-10-23 21:05:34.000000', 1),
+(142, 'Sofia', 'Wright', 'SID208', '08', 'REG208', '2013-08-08', 'sofia.wright208@example.com', '0123456808', '108 Main St', 'Father Wright', 'Mother Wright', 'Guardian Wright', 2, '2024-10-23 21:05:34.000000', 1),
+(143, 'David', 'Scott', 'SID209', '09', 'REG209', '2013-09-09', 'david.scott209@example.com', '0123456809', '109 Main St', 'Father Scott', 'Mother Scott', 'Guardian Scott', 2, '2024-10-23 21:05:34.000000', 1),
+(144, 'Ella', 'Green', 'SID210', '10', 'REG210', '2013-10-10', 'ella.green210@example.com', '0123456810', '110 Main St', 'Father Green', 'Mother Green', 'Guardian Green', 2, '2024-10-23 21:05:34.000000', 1),
+(145, 'Daniel', 'Baker', 'SID211', '11', 'REG211', '2013-11-11', 'daniel.baker211@example.com', '0123456811', '111 Main St', 'Father Baker', 'Mother Baker', 'Guardian Baker', 2, '2024-10-23 21:05:34.000000', 1),
+(146, 'Mila', 'Adams', 'SID212', '12', 'REG212', '2013-12-12', 'mila.adams212@example.com', '0123456812', '112 Main St', 'Father Adams', 'Mother Adams', 'Guardian Adams', 2, '2024-10-23 21:05:34.000000', 1),
+(147, 'Matthew', 'Nelson', 'SID213', '13', 'REG213', '2014-01-01', 'matthew.nelson213@example.com', '0123456813', '113 Main St', 'Father Nelson', 'Mother Nelson', 'Guardian Nelson', 2, '2024-10-23 21:05:34.000000', 1),
+(148, 'Emily', 'Mitchell', 'SID214', '14', 'REG214', '2014-02-02', 'emily.mitchell214@example.com', '0123456814', '114 Main St', 'Father Mitchell', 'Mother Mitchell', 'Guardian Mitchell', 2, '2024-10-23 21:05:34.000000', 1),
+(149, 'Owen', 'Perez', 'SID215', '15', 'REG215', '2014-03-03', 'owen.perez215@example.com', '0123456815', '115 Main St', 'Father Perez', 'Mother Perez', 'Guardian Perez', 2, '2024-10-23 21:05:34.000000', 1),
+(150, 'Scarlett', 'Hall', 'SID216', '16', 'REG216', '2014-04-04', 'scarlett.hall216@example.com', '0123456816', '116 Main St', 'Father Hall', 'Mother Hall', 'Guardian Hall', 2, '2024-10-23 21:05:34.000000', 1),
+(151, 'Samuel', 'Rivera', 'SID217', '17', 'REG217', '2014-05-05', 'samuel.rivera217@example.com', '0123456817', '117 Main St', 'Father Rivera', 'Mother Rivera', 'Guardian Rivera', 2, '2024-10-23 21:05:34.000000', 1),
+(152, 'Aubrey', 'Campbell', 'SID218', '18', 'REG218', '2014-06-06', 'aubrey.campbell218@example.com', '0123456818', '118 Main St', 'Father Campbell', 'Mother Campbell', 'Guardian Campbell', 2, '2024-10-23 21:05:34.000000', 1),
+(153, 'Gabriel', 'Carter', 'SID219', '19', 'REG219', '2014-07-07', 'gabriel.carter219@example.com', '0123456819', '119 Main St', 'Father Carter', 'Mother Carter', 'Guardian Carter', 2, '2024-10-23 21:05:34.000000', 1),
+(154, 'Hannah', 'Roberts', 'SID220', '20', 'REG220', '2014-08-08', 'hannah.roberts220@example.com', '0123456820', '120 Main St', 'Father Roberts', 'Mother Roberts', 'Guardian Roberts', 2, '2024-10-23 21:05:34.000000', 1),
+(155, 'Zoe', 'Thompson', 'SID250', '50', 'REG250', '2015-10-10', 'zoe.thompson250@example.com', '0123456850', '150 Main St', 'Father Thompson', 'Mother Thompson', 'Guardian Thompson', 2, '2024-10-23 21:05:34.000000', 1);
 
 -- --------------------------------------------------------
 
@@ -827,9 +981,9 @@ ALTER TABLE `menu_list`
 --
 ALTER TABLE `student_list`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `roll` (`roll`),
   ADD UNIQUE KEY `reg_no` (`reg_no`),
   ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `student_id` (`student_id`),
   ADD KEY `student_list_class_name_id_695dc80f_fk_class_list_id` (`class_name_id`);
 
 --
@@ -903,7 +1057,7 @@ ALTER TABLE `class_list`
 -- AUTO_INCREMENT for table `class_wise_fee_setup`
 --
 ALTER TABLE `class_wise_fee_setup`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
 -- AUTO_INCREMENT for table `django_admin_log`
@@ -939,7 +1093,7 @@ ALTER TABLE `menu_list`
 -- AUTO_INCREMENT for table `student_list`
 --
 ALTER TABLE `student_list`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
 
 --
 -- AUTO_INCREMENT for table `user_access_control`
