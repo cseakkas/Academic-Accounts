@@ -540,35 +540,64 @@ def usersDelete(request, id):
 
  
 @UserLogin
-def studentsFeeCollection(request):
-    class_list = models.ClassList.objects.filter(status=True).order_by('rank') 
-    # year_list = year_array 
-
+def studentsFeeCollection(request): 
     if request.method == 'POST':
-        class_id = request.POST.get('class_id') 
-        roll = request.POST.get('roll')
-         
-        fees_type_list = models.ClassWiseFeeSetup.objects.all()
- 
-        if class_id:
-            class_id = int(class_id)
-            fees_type_list = fees_type_list.filter(class_name_id=class_id)
-         
-        if roll:
-            fees_type_list = fees_type_list.filter(class_name__roll=roll)
-     
-        context = { 
-            'class_list': class_list,
-            # 'year_list': year_list,
-            'fees_type_list': fees_type_list,
-            'class_id': class_id, 
-            'roll': roll,
-        }
-        return render(request, 'dashboard/students/fee_collection.html', context)
-
+        if "search_student" in request.POST: 
+            year = request.POST.get('year')
+            student_id = request.POST.get('student_id')
+    
+            chk_student = models.StudentList.objects.filter(student_id=student_id).first()
+            if chk_student: 
+                get_fee_types = models.ClassWiseFeeSetup.objects.filter(class_name_id=chk_student.class_name_id)
+                if get_fee_types:
+                    context = {
+                        'year_list': year_array, 
+                        'chk_student': chk_student, 
+                        'get_fee_types': get_fee_types,
+                        'year': year,
+                        'student_id': student_id,
+                    }  
+                    return render(request, 'dashboard/students/fee_collection.html', context)
+                else:
+                    context = {
+                        'year_list': year_array, 
+                        'chk_student': chk_student, 
+                        "error_msg": "Fee Types not found.",
+                        'year': year,
+                        'student_id': student_id,
+                    }
+                    return render(request, 'dashboard/students/fee_collection.html', context)
+            else:
+                context = {
+                    'year_list': year_array, 
+                    "error_msg": "Fee Types not found.",
+                    'year': year,
+                    'student_id': student_id,
+                }
+                return render(request, 'dashboard/students/fee_collection.html', context)
+        else: 
+            student_id = request.POST.get('student_id')
+            year = request.POST.get('year')
+            selected_fees = request.POST.getlist('selected_fees') 
+            get_student = models.StudentList.objects.filter(student_id=student_id).first()
+            if get_student:
+                for fee_id in selected_fees:
+                    paid_amount = request.POST.get(f'paid_amount_{fee_id}') 
+                    models.StudentFeeCollection.objects.create(
+                        student_name_id = get_student.id,
+                        class_name_id = get_student.class_name_id,
+                        fees_head_id = int(fee_id),
+                        year = year,
+                        fee_amount = paid_amount,
+                        due_amount = 0,
+                        discount_amount = 0 
+                    )
+                    
+                return redirect('/students/fee-collection/')
+              
     else:
         context = { 
-            'class_list': class_list, 
+            'year_list': year_array, 
         } 
         return render(request, 'dashboard/students/fee_collection.html', context)
 

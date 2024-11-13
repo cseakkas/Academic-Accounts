@@ -1,0 +1,225 @@
+{% extends 'dashboard/master.html' %}
+{% block title %} Fee Collection {% endblock %}
+{% block content %}
+
+
+<div class="content container-fluid">
+    <!-- Page Header -->
+    <div class="single-page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="page-title">Student Fee Collection
+                    <span style="float:right">
+                        <a href="#" class="btn btn-success">Fee Collection List</a>
+                    </span>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+ 
+    <div class="row">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <table class="table table-bordered table-striped">
+                            <tr>
+                                <th>Year</th>
+                                <td>
+                                    <select class="form-control" name="year" required> 
+                                        <option value="">Select Year</option>
+                                        {% for data in year_list %}
+                                            {% if data == year %}
+                                                <option value="{{ data }}" selected>{{ data }}</option>
+                                            {% else %}
+                                                <option value="{{ data }}">{{ data }}</option>
+                                            {% endif %} 
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <th>Student ID</th>
+                                <td>
+                                    <input type="text" style="width:190px" class="form-control" name="student_id" value="{{student_id}}" required>
+                                </td>
+                                <td>
+                                    <button type="submit" name="search_student" class="btn btn-primary">Search Student</button>
+                                </td>
+                            </tr>
+                        </table>
+                        <br> 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <style>
+        .no-margin-table tr td{
+            padding:3px !important;
+        }
+        .no-margin-table tr td input{
+            height: 34px !important; 
+        }
+        .no-margin-table tr td label input{ 
+            float: left;
+        }
+        .no-margin-table tr td label span{
+            margin-top:5px !important;
+            float: left;
+        }
+        .no-margin-table tr td label{
+            margin-bottom: 0px !important;
+            display: block;
+        }
+    </style>
+
+    {% if get_fee_types %}
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body"> 
+                    <form method="POST"> {% csrf_token %}
+                        <table class="table table-bordered no-margin-table">
+                            <tr style="background: #eceaea;"> 
+                                <th>
+                                    <label>
+                                        <input type="checkbox" id="check_uncheck_all" style="width:15px;height:15px; margin-right:8px;"> 
+                                        Fees Particular
+                                    </label>
+                                </th>
+                                <th class="width-150"  style="text-align:center">Amount</th>
+                                <th class="width-200">Paid Amount</th> <!-- Added paid amount field -->
+                            </tr>
+                        
+                            {% for data in get_fee_types %}
+                            <tr> 
+                                <td>
+                                    <label>
+                                        <input type="checkbox" class="single-checkbox" style="width:15px;height:15px; margin-right:8px;">
+                                        <span>{{ data.fees_head.chart_name }}</span>
+                                    </label>
+                                    <input type="text" name="fees_head_id" value="{{data.fees_head_id}}">
+                                    <input type="text" name="student_id" value="{{student_id}}">
+                                </td>
+                                <td style="text-align:center;vertical-align: middle;"> Tk. {{ data.amount }}/-</td>
+                                <td>
+                                    <input type="number" name="paid_amount" class="form-control paid-amount" style="width:175px">  
+                                </td>
+                            </tr>
+                            {% endfor %}
+                         
+                            <tr>
+                                <td colspan="2" class="text-right">Sub Total</td>
+                                <td class="text-right"> 
+                                    <input type="number" id="subTotal" class="form-control"  style="width:175px" value="0.00" readonly>
+                                </td>
+                            </tr>
+                            <!-- Discount -->
+                            <tr>
+                                <td colspan="2" class="text-right">Discount Amount(-)</td>
+                                <td class="text-right"> 
+                                    <input type="number" id="discount_Amount" class="form-control" style="width:175px" value="0.00">
+                                </td>
+                            </tr>
+                            <!-- Total Paid Amount -->
+                            <tr>
+                                <td colspan="2" class="text-right">Grand Total </td>
+                                <td class="text-right">
+                                    <input type="number" id="grand_Total_Amount" class="form-control" style="width:175px" value="0.00" readonly>
+                                </td>
+                            </tr>
+                         
+                            <tr>
+                                <td> </td>
+                                <td colspan="2" class="text-right">
+                                    <button type="submit" name="save_fees" class="btn btn-primary">Collect Fee</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4"> 
+            <div class="card">
+                <div class="card-body"> 
+                    <h3>Student Information</h3>
+                    <p><strong>Name: </strong> {{chk_student.first_name}} {{chk_student.last_name}} </p>
+                    <p><strong>Roll: </strong> {{chk_student.roll}}</p>
+                    <p><strong>Reg No: </strong> {{chk_student.reg_no}}</p>  
+                </div>
+            </div>
+        </div>
+    </div> 
+    {% else %}
+    {% if error_msg %} <h3 style="color:red">{{error_msg}}</h3> {% endif %}
+    {% endif %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Check/Uncheck all checkboxes
+    document.getElementById('check_uncheck_all').addEventListener('change', function() {
+        const checkboxes = document.querySelectorAll('.single-checkbox');
+        for (let checkbox of checkboxes) {
+            checkbox.checked = this.checked;
+        }
+    });
+
+    // Uncheck the "check_uncheck_all" if any single checkbox is unchecked
+    const singleCheckboxes = document.querySelectorAll('.single-checkbox');
+    for (let checkbox of singleCheckboxes) {
+        checkbox.addEventListener('change', function() {
+            if (!this.checked) {
+                document.getElementById('check_uncheck_all').checked = false;
+            }
+        });
+    }
+
+    // Check the "check_uncheck_all" if all single checkboxes are checked
+    for (let checkbox of singleCheckboxes) {
+        checkbox.addEventListener('change', function() {
+            const allChecked = Array.from(singleCheckboxes).every(checkbox => checkbox.checked);
+            if (allChecked) {
+                document.getElementById('check_uncheck_all').checked = true;
+            }
+        });
+    }
+</script>
+
+<script>
+    $(document).ready(function () { 
+        function calculateTotalPaid() {
+            let subTotal = 0;
+            $('.paid-amount').each(function() {
+                let value = parseFloat($(this).val()) || 0; 
+                subTotal += value;
+            });
+            $('#subTotal').val(subTotal.toFixed(2)); 
+        }
+
+        // Call the calculateTotalPaid function on page load and whenever input changes
+        $('.paid-amount').on('input', function() {
+            calculateTotalPaid();
+        });
+
+        // Handle Enter key to move to next input field
+        $('.paid-amount').on('keypress', function(e) {
+            if (e.which == 13){
+                e.preventDefault();
+
+                // Find the next input field
+                let nextInput = $(this).closest('tr').next().find('.paid-amount');
+
+                if (nextInput.length) {
+                    nextInput.focus();
+                }
+            }
+        });
+    });
+</script>
+
+{% endblock %}
