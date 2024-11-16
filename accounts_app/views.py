@@ -591,8 +591,7 @@ def studentsFeeCollection(request):
                         fee_amount = paid_amount,
                         due_amount = 0,
                         discount_amount = 0 
-                    )
-                    
+                    ) 
                 return redirect('/students/fee-collection/')
               
     else:
@@ -605,6 +604,10 @@ def studentsFeeCollection(request):
 
 @UserLogin
 def studentFeeCollectionList(request):
-    # student_fees = StudentFee.objects.all()
-    return render(request, 'dashboard/students/fee_collection_list.html')
+    student_fees = models.StudentFeeCollection.objects.all()
+
+    context = {
+        'student_fees':student_fees
+    }
+    return render(request, 'dashboard/students/fee_collection_list.html', context)
     

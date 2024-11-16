@@ -183,7 +183,7 @@ class ClassWiseFeeSetup(models.Model):
 
 class StudentFeeCollection(models.Model):
     # class_wise_fee              = models.ForeignKey(ClassWiseFeeSetup, on_delete=models.CASCADE)
-    student_name                        = models.ForeignKey(StudentList, on_delete=models.CASCADE)
+    student_name                = models.ForeignKey(StudentList, on_delete=models.CASCADE)
     fees_head                   = models.ForeignKey(ChartOfAccounts, on_delete=models.CASCADE)  
     class_name                  = models.ForeignKey(ClassList, on_delete=models.CASCADE)  
     year                        = models.CharField(max_length=32) 
