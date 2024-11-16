@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2024 at 08:59 AM
+-- Generation Time: Nov 16, 2024 at 03:33 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -117,7 +117,11 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (53, 'Can add class wise fee setup', 14, 'add_classwisefeesetup'),
 (54, 'Can change class wise fee setup', 14, 'change_classwisefeesetup'),
 (55, 'Can delete class wise fee setup', 14, 'delete_classwisefeesetup'),
-(56, 'Can view class wise fee setup', 14, 'view_classwisefeesetup');
+(56, 'Can view class wise fee setup', 14, 'view_classwisefeesetup'),
+(57, 'Can add Student Fee Collection', 15, 'add_studentfeecollection'),
+(58, 'Can change Student Fee Collection', 15, 'change_studentfeecollection'),
+(59, 'Can delete Student Fee Collection', 15, 'delete_studentfeecollection'),
+(60, 'Can view Student Fee Collection', 15, 'view_studentfeecollection');
 
 -- --------------------------------------------------------
 
@@ -380,7 +384,29 @@ INSERT INTO `class_wise_fee_setup` (`id`, `class_name_id`, `year`, `fees_head_id
 (107, 4, '2025', 20, 0, 1, '2024-10-25 17:33:13.650332', NULL),
 (108, 4, '2025', 21, 0, 1, '2024-10-25 17:33:13.653329', NULL),
 (109, 4, '2025', 22, 0, 1, '2024-10-25 17:33:13.658328', NULL),
-(110, 4, '2025', 23, 0, 1, '2024-10-25 17:33:13.662325', NULL);
+(110, 4, '2025', 23, 0, 1, '2024-10-25 17:33:13.662325', NULL),
+(111, 5, '2024', 2, 4000, 1, '2024-11-13 13:51:49.262724', NULL),
+(112, 5, '2024', 3, 4500, 1, '2024-11-13 13:51:49.309699', NULL),
+(113, 5, '2024', 4, 100, 1, '2024-11-13 13:51:49.318692', NULL),
+(114, 5, '2024', 5, 100, 1, '2024-11-13 13:51:49.320692', NULL),
+(115, 5, '2024', 6, 100, 1, '2024-11-13 13:51:49.322693', NULL),
+(116, 5, '2024', 7, 100, 1, '2024-11-13 13:51:49.324690', NULL),
+(117, 5, '2024', 8, 100, 1, '2024-11-13 13:51:49.327688', NULL),
+(118, 5, '2024', 9, 100, 1, '2024-11-13 13:51:49.336682', NULL),
+(119, 5, '2024', 10, 100, 1, '2024-11-13 13:51:49.338682', NULL),
+(120, 5, '2024', 11, 100, 1, '2024-11-13 13:51:49.341680', NULL),
+(121, 5, '2024', 12, 100, 1, '2024-11-13 13:51:49.344679', NULL),
+(122, 5, '2024', 13, 100, 1, '2024-11-13 13:51:49.347676', NULL),
+(123, 5, '2024', 14, 100, 1, '2024-11-13 13:51:49.349675', NULL),
+(124, 5, '2024', 15, 100, 1, '2024-11-13 13:51:49.352672', NULL),
+(125, 5, '2024', 16, 100, 1, '2024-11-13 13:51:49.355671', NULL),
+(126, 5, '2024', 17, 100, 1, '2024-11-13 13:51:49.358669', NULL),
+(127, 5, '2024', 18, 100, 1, '2024-11-13 13:51:49.376660', NULL),
+(128, 5, '2024', 19, 100, 1, '2024-11-13 13:51:49.379659', NULL),
+(129, 5, '2024', 20, 100, 1, '2024-11-13 13:51:49.382657', NULL),
+(130, 5, '2024', 21, 100, 1, '2024-11-13 13:51:49.384655', NULL),
+(131, 5, '2024', 22, 100, 1, '2024-11-13 13:51:49.387654', NULL),
+(132, 5, '2024', 23, 100, 1, '2024-11-13 13:51:49.390652', NULL);
 
 -- --------------------------------------------------------
 
@@ -475,6 +501,7 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (14, 'accounts_app', 'classwisefeesetup'),
 (13, 'accounts_app', 'financialhead'),
 (7, 'accounts_app', 'menulist'),
+(15, 'accounts_app', 'studentfeecollection'),
 (10, 'accounts_app', 'studentlist'),
 (9, 'accounts_app', 'useraccesscontrol'),
 (8, 'accounts_app', 'userregistration'),
@@ -528,7 +555,10 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (23, 'accounts_app', '0005_chartofaccounts_financialhead', '2024-09-29 16:05:17.025541'),
 (24, 'accounts_app', '0006_auto_20240929_2207', '2024-09-29 16:07:50.741736'),
 (25, 'accounts_app', '0007_auto_20240929_2210', '2024-09-29 16:10:48.865430'),
-(26, 'accounts_app', '0008_classwisefeesetup', '2024-10-02 18:00:00.849839');
+(26, 'accounts_app', '0008_classwisefeesetup', '2024-10-02 18:00:00.849839'),
+(27, 'accounts_app', '0002_studentfeecollection', '2024-11-01 09:36:59.240689'),
+(28, 'accounts_app', '0003_studentfeecollection_student_name', '2024-11-01 09:38:02.496898'),
+(29, 'accounts_app', '0004_remove_studentfeecollection_class_wise_fee', '2024-11-01 09:42:10.784379');
 
 -- --------------------------------------------------------
 
@@ -547,6 +577,7 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
+('2v6hg9umweplx0y16qi7xozz57ho6kv5', '.eJxdi00OwiAYRK_SfOsG5R-60gP0DIS0iNhSGqgr492lqW7czbw384JncdmEETrcHtlFG2bowE6TLWgoTuiL3xkaUoQWbiGXzSw2ujrqR9Rc9yF83_-86YP9ufWetlTlUXLyYXYnqQXTmFGDiRZYEqUkoVxxYgijmlVApdSc8DOWwizosXp4fwB7IDhg:1t6mbE:WFjKSWg6_aWgOHU72jBbwHPQy9NALroZ0kgDyZ4NlZM', '2024-11-15 08:01:40.259048'),
 ('4tlkmyhln7pyk6dz64b0sn8dtmds2wvb', '.eJxdi00OwiAYRK_SfOsG5R-60gP0DIS0iNhSGqgr492lqW7czbw384JncdmEETrcHtlFG2bowE6TLWgoTuiL3xkaUoQWbiGXzSw2ujrqR9Rc9yF83_-86YP9ufWetlTlUXLyYXYnqQXTmFGDiRZYEqUkoVxxYgijmlVApdSc8DOWwizosXp4fwB7IDhg:1sua5z:vRvbghi8g2FSzQaj3ciouZgpTMOF7Zp76PZBMBUPkbE', '2024-10-12 16:14:59.194292'),
 ('7tpc1a2mwqg2c9kipork7pa81k0n5rjq', '.eJxdj0tOxDAQRK8yyhqZ-G-zAvY5g9Wx24knH4_izApxdxyRQcCuu6r6qfqjcXDfR3cvuLkUmpeGNk-_tR78hOthhCusQyY-r_uWenJEyOkW0uWA8_uZ_QMYoYz1uqVa9tSjDRRMVIgIMRhNo0ChwQceo7AsIkPlrTJR9LxVgnMPkhov2wr96UjPGRdIc2XDNEEhvqCyr8Oh1ZJLPYhpK7tbYcEa6gK5vB3BB-m_fukSPLzbmPdcze9ly0Oa8VlbJSwV3FFmFdXMGM24NJI5JrgVVeBaW8lk_VW5lVxvQ_P5BThgcDA:1sldqE:I_GOfiUFw_KtXfyk5GIlzDwTdespfr9ApasH-SEAj1M', '2024-09-18 00:25:46.440750'),
 ('f9296rbigbmraeefbuuzw92amx5k7xhc', '.eJxdi00OwiAYRK_SfOsG5R-60gP0DIS0iNhSGqgr492lqW7czbw384JncdmEETrcHtlFG2bowE6TLWgoTuiL3xkaUoQWbiGXzSw2ujrqR9Rc9yF83_-86YP9ufWetlTlUXLyYXYnqQXTmFGDiRZYEqUkoVxxYgijmlVApdSc8DOWwizosXp4fwB7IDhg:1t4O6u:KEXRLFZkzDoOIivBvyovvq_cyfcocE4sMuGGUUwX8MM', '2024-11-08 17:28:28.759652'),
@@ -622,6 +653,45 @@ INSERT INTO `menu_list` (`id`, `menu_name`, `menu_url`, `module_name`, `module_o
 (9, 'Access Control List', '/settings/access-control-list/', 'Settings', 4, 10, '', '', '', 0, NULL, '2024-10-03 15:24:15.415623', '2024-10-03 15:26:37.313464', 1, NULL),
 (10, 'Access Control Add', '/settings/access-control-add/', 'Settings', 4, 9, '', '', '', 0, NULL, '2024-10-03 15:25:12.497569', '2024-10-03 15:26:44.605481', 1, NULL),
 (11, 'User Add', '/users/user-add/', 'Users', 5, 1, '', '', '', 0, NULL, '2024-10-03 15:32:32.249049', '2024-10-03 15:32:32.249049', 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_fee_collection`
+--
+
+CREATE TABLE `student_fee_collection` (
+  `id` bigint(20) NOT NULL,
+  `year` varchar(32) NOT NULL,
+  `fee_amount` double NOT NULL,
+  `due_amount` double NOT NULL,
+  `discount_amount` double NOT NULL,
+  `due_date` date DEFAULT NULL,
+  `created` datetime(6) NOT NULL,
+  `updated` datetime(6) NOT NULL,
+  `insert_by` int(11) NOT NULL,
+  `update_by` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `class_name_id` bigint(20) NOT NULL,
+  `fees_head_id` bigint(20) NOT NULL,
+  `student_name_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `student_fee_collection`
+--
+
+INSERT INTO `student_fee_collection` (`id`, `year`, `fee_amount`, `due_amount`, `discount_amount`, `due_date`, `created`, `updated`, `insert_by`, `update_by`, `status`, `class_name_id`, `fees_head_id`, `student_name_id`) VALUES
+(44, '2024', 4500, 0, 0, NULL, '2024-11-13 17:26:02.789273', '2024-11-13 17:26:02.789273', 0, 0, 0, 5, 3, 5),
+(45, '2024', 100, 0, 0, NULL, '2024-11-13 17:26:02.793420', '2024-11-13 17:26:02.793420', 0, 0, 0, 5, 4, 5),
+(46, '2024', 100, 0, 0, NULL, '2024-11-13 17:26:02.796263', '2024-11-13 17:26:02.796263', 0, 0, 0, 5, 5, 5),
+(47, '2024', 100, 0, 0, NULL, '2024-11-13 17:26:02.803162', '2024-11-13 17:26:02.803162', 0, 0, 0, 5, 6, 5),
+(48, '2024', 4000, 0, 0, NULL, '2024-11-13 17:27:17.448106', '2024-11-13 17:27:17.448106', 0, 0, 0, 5, 2, 19),
+(49, '2024', 100, 0, 0, NULL, '2024-11-13 17:27:17.452103', '2024-11-13 17:27:17.452103', 0, 0, 0, 5, 12, 19),
+(50, '2024', 100, 0, 0, NULL, '2024-11-13 17:27:17.456101', '2024-11-13 17:27:17.456101', 0, 0, 0, 5, 13, 19),
+(51, '2024', 100, 0, 0, NULL, '2024-11-13 17:27:17.461100', '2024-11-13 17:27:17.461100', 0, 0, 0, 5, 14, 19),
+(52, '2024', 100, 0, 0, NULL, '2024-11-13 17:27:17.463096', '2024-11-13 17:27:17.463096', 0, 0, 0, 5, 15, 19),
+(53, '2024', 100, 0, 0, NULL, '2024-11-13 17:27:17.467107', '2024-11-13 17:27:17.467107', 0, 0, 0, 5, 16, 19);
 
 -- --------------------------------------------------------
 
@@ -977,6 +1047,15 @@ ALTER TABLE `menu_list`
   ADD KEY `menu_list_created_by_id_37c8f718_fk_user_list_id` (`created_by_id`);
 
 --
+-- Indexes for table `student_fee_collection`
+--
+ALTER TABLE `student_fee_collection`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `student_fee_collection_class_name_id_de7ded25_fk_class_list_id` (`class_name_id`),
+  ADD KEY `student_fee_collecti_fees_head_id_424d9f74_fk_chart_of_` (`fees_head_id`),
+  ADD KEY `student_fee_collecti_student_name_id_1fff8cf8_fk_student_l` (`student_name_id`);
+
+--
 -- Indexes for table `student_list`
 --
 ALTER TABLE `student_list`
@@ -1021,7 +1100,7 @@ ALTER TABLE `auth_group_permissions`
 -- AUTO_INCREMENT for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `auth_user`
@@ -1057,7 +1136,7 @@ ALTER TABLE `class_list`
 -- AUTO_INCREMENT for table `class_wise_fee_setup`
 --
 ALTER TABLE `class_wise_fee_setup`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
 -- AUTO_INCREMENT for table `django_admin_log`
@@ -1069,13 +1148,13 @@ ALTER TABLE `django_admin_log`
 -- AUTO_INCREMENT for table `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `financial_head`
@@ -1088,6 +1167,12 @@ ALTER TABLE `financial_head`
 --
 ALTER TABLE `menu_list`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `student_fee_collection`
+--
+ALTER TABLE `student_fee_collection`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `student_list`
@@ -1163,6 +1248,14 @@ ALTER TABLE `django_admin_log`
 --
 ALTER TABLE `menu_list`
   ADD CONSTRAINT `menu_list_created_by_id_37c8f718_fk_user_list_id` FOREIGN KEY (`created_by_id`) REFERENCES `user_list` (`id`);
+
+--
+-- Constraints for table `student_fee_collection`
+--
+ALTER TABLE `student_fee_collection`
+  ADD CONSTRAINT `student_fee_collecti_fees_head_id_424d9f74_fk_chart_of_` FOREIGN KEY (`fees_head_id`) REFERENCES `chart_of_accounts` (`id`),
+  ADD CONSTRAINT `student_fee_collecti_student_name_id_1fff8cf8_fk_student_l` FOREIGN KEY (`student_name_id`) REFERENCES `student_list` (`id`),
+  ADD CONSTRAINT `student_fee_collection_class_name_id_de7ded25_fk_class_list_id` FOREIGN KEY (`class_name_id`) REFERENCES `class_list` (`id`);
 
 --
 -- Constraints for table `student_list`
