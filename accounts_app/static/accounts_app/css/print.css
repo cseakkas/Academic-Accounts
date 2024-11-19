@@ -1,0 +1,12 @@
+.header, .sidebar {
+    display: none !important;;
+}
+.page-wrapper {
+    margin: 0;
+}
+.invoice-details th {
+    color: #000 !important;;
+}
+title {
+    color: blue;
+}
