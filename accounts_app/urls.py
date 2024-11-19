@@ -36,6 +36,7 @@ urlpatterns = [
 
     path('students/fee-collection/', views.studentsFeeCollection, name='studentsFeeCollection'),
     path('students/fee-collection-list/', views.studentFeeCollectionList, name='feestudentFeeCollectionList_list'),
+    path('students/fee-collection-invoice/', views.studentFeeCollectionInvoice, name='studentFeeCollectionInvoice'),
 
 
     

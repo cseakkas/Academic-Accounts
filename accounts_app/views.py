@@ -611,3 +611,20 @@ def studentFeeCollectionList(request):
     }
     return render(request, 'dashboard/students/fee_collection_list.html', context)
     
+
+
+@UserLogin 
+def studentFeeCollectionInvoice(request):
+    context = {
+        'student_name': 'John Deo',
+        'class': 'Five',
+        'roll_no': '101',
+        'invoice_date': '2024-11-16',
+        'fees': [
+            {'sl': 1, 'description': 'Tuition Fee', 'amount': 10000},
+            {'sl': 2, 'description': 'Library Fee', 'amount': 2000},
+            {'sl': 3, 'description': 'Laboratory Fee', 'amount': 1500},
+        ],
+        'total_amount': 13500,
+    }
+    return render(request, 'dashboard/students/fee_collection_invoice.html', context)
