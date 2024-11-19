@@ -144,6 +144,7 @@ def studentList(request):
     if request.method == 'POST':
         search_name = request.POST.get('search_name').strip()
         class_id = request.POST.get('class_id')
+        
         search_roll = request.POST.get('search_roll')
   
         # Filter the student list based on search criteria
@@ -539,17 +540,104 @@ def usersDelete(request, id):
         return redirect('/users/user-list/') 
 
  
+# @UserLogin
+# def studentsFeeCollection(request): 
+#     if request.method == 'POST':
+#         if "search_student" in request.POST: 
+#             year = request.POST.get('year')
+#             student_id = request.POST.get('student_id')
+    
+#             chk_student = models.StudentList.objects.filter(student_id=student_id).first()
+#             if chk_student: 
+#                 get_fee_types = models.ClassWiseFeeSetup.objects.filter(class_name_id=chk_student.class_name_id)
+#                 if get_fee_types:
+#                     context = {
+#                         'year_list': year_array, 
+#                         'chk_student': chk_student, 
+#                         'get_fee_types': get_fee_types,
+#                         'year': year,
+#                         'student_id': student_id,
+#                     }  
+#                     return render(request, 'dashboard/students/fee_collection.html', context)
+#                 else:
+#                     context = {
+#                         'year_list': year_array, 
+#                         'chk_student': chk_student, 
+#                         "error_msg": "Fee Types not found.",
+#                         'year': year,
+#                         'student_id': student_id,
+#                     }
+#                     return render(request, 'dashboard/students/fee_collection.html', context)
+#             else:
+#                 context = {
+#                     'year_list': year_array, 
+#                     "error_msg": "Fee Types not found.",
+#                     'year': year,
+#                     'student_id': student_id,
+#                 }
+#                 return render(request, 'dashboard/students/fee_collection.html', context)
+#         else: 
+#             student_id = request.POST.get('student_id')
+#             year = request.POST.get('year')
+#             selected_fees = request.POST.getlist('selected_fees') 
+#             get_student = models.StudentList.objects.filter(student_id=student_id).first()
+#             if get_student:
+#                 for fee_id in selected_fees:
+#                     paid_amount = request.POST.get(f'paid_amount_{fee_id}') 
+#                     models.StudentFeeCollection.objects.create(
+#                         student_name_id = get_student.id,
+#                         class_name_id = get_student.class_name_id,
+#                         fees_head_id = int(fee_id),
+#                         year = year,
+#                         fee_amount = paid_amount,
+#                         due_amount = 0,
+#                         discount_amount = 0 
+#                     ) 
+#                 return redirect('/students/fee-collection/')
+              
+#     else:
+#         context = { 
+#             'year_list': year_array, 
+#         } 
+#         return render(request, 'dashboard/students/fee_collection.html', context)
+
+# from django.shortcuts import render, redirect
+# from django.contrib import messages
+# from . import models
+
 @UserLogin
 def studentsFeeCollection(request): 
     if request.method == 'POST':
         if "search_student" in request.POST: 
+            # Fetching year and student ID
             year = request.POST.get('year')
             student_id = request.POST.get('student_id')
+
+            print("Year: ", year)
+            print("student_id: ", student_id)
+
     
             chk_student = models.StudentList.objects.filter(student_id=student_id).first()
             if chk_student: 
-                get_fee_types = models.ClassWiseFeeSetup.objects.filter(class_name_id=chk_student.class_name_id)
-                if get_fee_types:
+                # Exclude already paid fees
+                # paid_fees = models.StudentFeeCollection.objects.filter(
+                #     student_name_id=chk_student.id,
+                #     year=year, due_amount=0
+                # ).values_list('fees_head_id', 'fee_amount', 'due_amount')
+
+                paid_fees = models.StudentFeeCollection.objects.filter(
+                    student_name_id=chk_student.id,
+                    year=year,
+                    due_amount=0  
+                ).values_list('fees_head_id')
+
+                # Fetch unpaid fee types  
+                get_fee_types = models.ClassWiseFeeSetup.objects.filter(
+                    class_name_id=chk_student.class_name_id,
+                    year = year,
+                ).exclude(fees_head_id__in=paid_fees)  
+
+                if get_fee_types: 
                     context = {
                         'year_list': year_array, 
                         'chk_student': chk_student, 
@@ -558,28 +646,32 @@ def studentsFeeCollection(request):
                         'student_id': student_id,
                     }  
                     return render(request, 'dashboard/students/fee_collection.html', context)
-                else:
+                
+                else: 
                     context = {
                         'year_list': year_array, 
                         'chk_student': chk_student, 
-                        "error_msg": "Fee Types not found.",
+                        "error_msg": "All fees have been paid for this student.",
                         'year': year,
                         'student_id': student_id,
                     }
                     return render(request, 'dashboard/students/fee_collection.html', context)
             else:
+                print("Test 3")
                 context = {
                     'year_list': year_array, 
-                    "error_msg": "Fee Types not found.",
+                    "error_msg": "Student not found.",
                     'year': year,
                     'student_id': student_id,
                 }
                 return render(request, 'dashboard/students/fee_collection.html', context)
         else: 
+            # Collecting fees
             student_id = request.POST.get('student_id')
             year = request.POST.get('year')
             selected_fees = request.POST.getlist('selected_fees') 
             get_student = models.StudentList.objects.filter(student_id=student_id).first()
+
             if get_student:
                 for fee_id in selected_fees:
                     paid_amount = request.POST.get(f'paid_amount_{fee_id}') 
@@ -592,14 +684,17 @@ def studentsFeeCollection(request):
                         due_amount = 0,
                         discount_amount = 0 
                     ) 
+                
+                # Add success message
+                # messages.success(request, "Fee collection successfully updated.")
                 return redirect('/students/fee-collection/')
               
     else:
+        # Initial load
         context = { 
             'year_list': year_array, 
         } 
         return render(request, 'dashboard/students/fee_collection.html', context)
-
 
 
 @UserLogin
